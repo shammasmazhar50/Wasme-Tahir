@@ -1,0 +1,150 @@
+.press-page {
+  padding-top: var(--nav-height);
+  background-color: var(--color-warm-ivory);
+}
+
+.press-header {
+  padding: 8rem 0 4rem;
+}
+
+.press-featured-in {
+  padding-bottom: 6rem;
+  border-bottom: 1px solid rgba(26, 26, 26, 0.1);
+}
+
+.press-logos {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 4rem;
+  margin-top: 2rem;
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  color: var(--color-muted-taupe);
+}
+
+.press-articles {
+  padding: 8rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+}
+
+.article-row {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.article-img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+}
+
+.article-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.article-row:hover .article-img img {
+  transform: scale(1.05);
+}
+
+.article-content .subheading {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.article-content .heading-md {
+  margin-bottom: 2rem;
+}
+
+.read-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 0.25rem;
+}
+
+.press-downloads {
+  padding: 4rem 0 8rem;
+  border-top: 1px solid rgba(26, 26, 26, 0.1);
+  padding-top: 8rem;
+}
+
+.press-downloads .heading-md {
+  margin-bottom: 4rem;
+}
+
+.download-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.download-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 3rem 2rem;
+  background-color: rgba(26, 26, 26, 0.03);
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.download-card:hover {
+  background-color: var(--color-warm-ivory);
+  border-color: rgba(26, 26, 26, 0.1);
+  transform: translateY(-5px);
+}
+
+.download-card svg {
+  margin-bottom: 1.5rem;
+  color: var(--color-muted-taupe);
+}
+
+.download-card h4 {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.download-card p {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--color-muted-taupe);
+  margin: 0;
+}
+
+@media (max-width: 992px) {
+  .download-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .article-row {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .download-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .press-logos {
+    gap: 2rem;
+    font-size: 1.5rem;
+  }
+}
