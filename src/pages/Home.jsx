@@ -77,7 +77,7 @@ const Home = () => {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
           >
-            <img src="/images/75D4C60D-DA06-47C7-870F-3FF20936254B.jpg" alt="Wasme Tahir Portrait" />
+            <img src="/images/IMG_2118.jpg" alt="Wasme Tahir Portrait" />
           </motion.div>
           
           <div className="intro-text-content">
@@ -178,7 +178,7 @@ const Home = () => {
           
           {/* Lifestyle */}
           <motion.div className="world-card" whileHover="hover" initial="initial" whileInView="animate" variants={fadeUp} viewport={{ once: true }}>
-            <div className="card-img" style={{ backgroundImage: 'url(/images/5D2BE0DA-759F-468C-B889-C5367998DB6E.jpg)' }}></div>
+            <div className="card-img" style={{ backgroundImage: 'url(/images/IMG_9755.webp)' }}></div>
             <div className="card-content">
               <h3>LIFESTYLE</h3>
               <p>The places, experiences and everyday moments that make up life beyond the feed.</p>
@@ -245,7 +245,7 @@ const Home = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <div className="campaign-img" style={{ backgroundImage: 'url(/images/7E924B31-AAB3-41E3-B6B0-24E65BFABF81.png)' }}></div>
+            <div className="campaign-img" style={{ backgroundImage: 'url(/images/7E924B31.webp)' }}></div>
             <div className="campaign-info">
               <h4 className="subheading">SENDWAVE</h4>
               <h3 className="heading-md">Connecting people across borders</h3>

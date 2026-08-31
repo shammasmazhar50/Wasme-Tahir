@@ -40,7 +40,7 @@ const Editorial = () => {
         <section className="gallery-archive">
           
           <motion.div className="archive-item full-width" {...fadeUp}>
-            <img src="/images/75D4C60D-DA06-47C7-870F-3FF20936254B.jpg" alt="Editorial" />
+            <img src="/images/IMG_6314.webp" alt="Editorial" />
             <div className="archive-caption">
               <span className="caption-cat">FASHION</span>
               <p>Summer in the City</p>
@@ -68,7 +68,7 @@ const Editorial = () => {
           </div>
 
           <motion.div className="archive-item full-width" {...fadeUp}>
-            <img src="/images/7E924B31-AAB3-41E3-B6B0-24E65BFABF81.png" alt="Editorial" />
+            <img src="/images/7E924B31.webp" alt="Editorial" />
             <div className="archive-caption">
               <span className="caption-cat">CULTURE</span>
               <p>Eid Celebrations</p>

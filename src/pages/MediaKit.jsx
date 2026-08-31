@@ -38,7 +38,7 @@ const MediaKit = () => {
             </motion.button>
           </div>
           <motion.div className="mk-header-img" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.2, duration: 1 }}>
-             <img src="/images/7E924B31-AAB3-41E3-B6B0-24E65BFABF81.png" alt="Wasme Tahir" />
+             <img src="/images/7E924B31.webp" alt="Wasme Tahir" />
           </motion.div>
         </section>
 

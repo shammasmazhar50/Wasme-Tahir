@@ -58,7 +58,7 @@ const Contact = () => {
             
             <motion.div className="direct-email" {...fadeUp} transition={{ delay: 0.3 }}>
               <span className="subheading">DIRECT INQUIRIES</span>
-              <a href="mailto:hello@wasmetahir.com">hello@wasmetahir.com</a>
+              <a href="mailto:contact@wasmetahir.com">contact@wasmetahir.com</a>
             </motion.div>
           </div>
 

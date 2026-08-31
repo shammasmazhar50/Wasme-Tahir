@@ -36,7 +36,7 @@ const About = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.2, delay: 0.4, ease: "easeOut" }}
           >
-            <img src="/images/75D4C60D-DA06-47C7-870F-3FF20936254B.jpg" alt="Wasme Tahir portrait" />
+            <img src="/images/IMG_4542.webp" alt="Wasme Tahir portrait" />
           </motion.div>
         </section>
 

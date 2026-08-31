@@ -9,6 +9,7 @@ import Editorial from './pages/Editorial';
 import Press from './pages/Press';
 import MediaKit from './pages/MediaKit';
 import Contact from './pages/Contact';
+import NotFound from './pages/NotFound';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path="press" element={<Press />} />
             <Route path="media-kit" element={<MediaKit />} />
             <Route path="contact" element={<Contact />} />
+            <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
       </Router>

@@ -70,7 +70,7 @@ const Collaborations = () => {
           <div className="case-study-list">
             {/* Case Study 1 */}
             <motion.div className="case-study-card" {...fadeUp}>
-              <div className="case-img" style={{ backgroundImage: 'url(/images/7E924B31-AAB3-41E3-B6B0-24E65BFABF81.png)' }}></div>
+              <div className="case-img" style={{ backgroundImage: 'url(/images/7E924B31.webp)' }}></div>
               <div className="case-content">
                 <div className="case-meta">
                   <span className="subheading">SENDWAVE</span>
