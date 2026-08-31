@@ -1,32 +1,41 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowDown, ArrowRight } from 'lucide-react';
 import './Home.css';
 
 const fadeUp = {
-  initial: { opacity: 0, y: 30 },
-  animate: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+  initial: { opacity: 0, y: 40 },
+  animate: { opacity: 1, y: 0, transition: { duration: 1, ease: [0.16, 1, 0.3, 1] } }
 };
 
 const staggerContainer = {
-  animate: { transition: { staggerChildren: 0.1 } }
+  animate: { transition: { staggerChildren: 0.15 } }
 };
 
 const Home = () => {
+  const { scrollY } = useScroll();
+  const heroBgY = useTransform(scrollY, [0, 1000], ['0%', '30%']);
+
   return (
     <motion.div 
       className="home-page"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.6 }}
+      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
     >
       {/* 01 - HERO */}
       <section className="hero-section">
         {/* Placeholder for video */}
-        <div className="hero-bg" style={{ backgroundImage: 'url(/images/24230D23-EA10-4D64-B521-27B9642A07BA.jpg)' }}>
+        <motion.div 
+          className="hero-bg" 
+          style={{ 
+            backgroundImage: 'url(/images/24230D23-EA10-4D64-B521-27B9642A07BA.jpg)',
+            y: heroBgY 
+          }}
+        >
           <div className="hero-overlay"></div>
-        </div>
+        </motion.div>
         
         <div className="hero-content">
           <motion.h1 
