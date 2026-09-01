@@ -11,7 +11,7 @@ const fadeUp = {
 
 const Press = () => {
   return (
-    <motion.div 
+    <motion.div
       className="press-page"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -19,9 +19,9 @@ const Press = () => {
       transition={{ duration: 0.6 }}
     >
       <div className="container">
-        
+
         <section className="press-header">
-          <motion.h1 
+          <motion.h1
             className="heading-xl text-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -42,10 +42,10 @@ const Press = () => {
         </section>
 
         <section className="press-articles">
-          
+
           <motion.div className="article-row" {...fadeUp}>
             <div className="article-img">
-              <img src="/images/75D4C60D-DA06-47C7-870F-3FF20936254B.jpg" alt="Press Feature" />
+              <img src="/images/IMG_1383.webp" alt="Press Feature" style={{ objectPosition: '50% 20%' }} />
             </div>
             <div className="article-content">
               <span className="subheading">VOGUE DIGITAL</span>
@@ -56,7 +56,7 @@ const Press = () => {
 
           <motion.div className="article-row" {...fadeUp}>
             <div className="article-img">
-              <img src="/images/62DBBB6D-00CF-4025-B66D-CD0A0F948E77.jpg" alt="Press Feature" />
+              <img src="/images/IMG_4981.webp" alt="Press Feature" />
             </div>
             <div className="article-content">
               <span className="subheading">ALLURE</span>
@@ -69,26 +69,26 @@ const Press = () => {
 
         <section className="press-downloads">
           <motion.h3 className="heading-md text-center" {...fadeUp}>Press Assets</motion.h3>
-          
+
           <div className="download-grid">
             <motion.a href="#" className="download-card" {...fadeUp}>
               <Download size={24} />
               <h4>Download Media Kit</h4>
               <p>PDF, 2.4MB</p>
             </motion.a>
-            
+
             <motion.a href="#" className="download-card" {...fadeUp} transition={{ delay: 0.1 }}>
               <Download size={24} />
               <h4>High-Resolution Images</h4>
               <p>ZIP, 145MB</p>
             </motion.a>
-            
+
             <motion.a href="#" className="download-card" {...fadeUp} transition={{ delay: 0.2 }}>
               <Download size={24} />
               <h4>Download Bio</h4>
               <p>PDF, 120KB</p>
             </motion.a>
-            
+
             <motion.a href="#" className="download-card" {...fadeUp} transition={{ delay: 0.3 }}>
               <Download size={24} />
               <h4>Download Headshots</h4>

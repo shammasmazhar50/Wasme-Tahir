@@ -17,7 +17,7 @@ const Home = () => {
   const heroBgY = useTransform(scrollY, [0, 1000], ['0%', '30%']);
 
   return (
-    <motion.div 
+    <motion.div
       className="home-page"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -27,18 +27,18 @@ const Home = () => {
       {/* 01 - HERO */}
       <section className="hero-section">
         {/* Placeholder for video */}
-        <motion.div 
-          className="hero-bg" 
-          style={{ 
-            backgroundImage: 'url(/images/24230D23-EA10-4D64-B521-27B9642A07BA.jpg)',
-            y: heroBgY 
+        <motion.div
+          className="hero-bg"
+          style={{
+            backgroundImage: 'url(/images/24230D23-EA10-4D64-B521-27B9642A07BA.webp)',
+            y: heroBgY
           }}
         >
           <div className="hero-overlay"></div>
         </motion.div>
-        
+
         <div className="hero-content">
-          <motion.h1 
+          <motion.h1
             className="heading-xl hero-title"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -46,7 +46,7 @@ const Home = () => {
           >
             WASME TAHIR
           </motion.h1>
-          <motion.p 
+          <motion.p
             className="subheading hero-subtitle"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -54,8 +54,8 @@ const Home = () => {
           >
             Digital Creator · Fashion · Lifestyle · Culture
           </motion.p>
-          
-          <motion.div 
+
+          <motion.div
             className="hero-cta"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -70,28 +70,28 @@ const Home = () => {
       {/* 02 - THE INTRODUCTION */}
       <section className="intro-section container">
         <div className="intro-grid">
-          <motion.div 
+          <motion.div
             className="intro-image"
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
           >
-            <img src="/images/IMG_2118.jpg" alt="Wasme Tahir Portrait" />
+            <img src="/images/IMG_2118.webp" alt="Wasme Tahir Portrait" />
           </motion.div>
-          
+
           <div className="intro-text-content">
-            <motion.h2 
+            <motion.h2
               className="heading-lg intro-heading"
               variants={fadeUp}
               initial="initial"
               whileInView="animate"
               viewport={{ once: true }}
             >
-              More than content.<br/>A point of view.
+              More than content.<br />A point of view.
             </motion.h2>
-            
-            <motion.div 
+
+            <motion.div
               className="intro-body"
               variants={fadeUp}
               initial="initial"
@@ -101,8 +101,8 @@ const Home = () => {
               <p>Wasme Tahir is a Pakistani-American digital creator whose content sits at the intersection of fashion, lifestyle, family and culture.</p>
               <p>From fashion and beauty to the everyday moments that make life relatable, Wasme creates content that feels personal, expressive and distinctly her own.</p>
             </motion.div>
-            
-            <motion.div 
+
+            <motion.div
               className="category-tags"
               variants={staggerContainer}
               initial="initial"
@@ -120,7 +120,7 @@ const Home = () => {
       {/* 03 - SOCIAL REACH */}
       <section className="stats-section">
         <div className="container">
-          <motion.div 
+          <motion.div
             className="stats-header"
             variants={fadeUp}
             initial="initial"
@@ -129,8 +129,8 @@ const Home = () => {
           >
             <h3 className="subheading">A community that follows the story</h3>
           </motion.div>
-          
-          <motion.div 
+
+          <motion.div
             className="stats-grid"
             variants={staggerContainer}
             initial="initial"
@@ -156,7 +156,7 @@ const Home = () => {
 
       {/* 04 - CONTENT WORLD */}
       <section className="content-world container">
-        <motion.h2 
+        <motion.h2
           className="section-title text-center heading-md"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -164,18 +164,18 @@ const Home = () => {
         >
           What I Create
         </motion.h2>
-        
+
         <div className="world-grid">
           {/* Fashion */}
           <motion.div className="world-card large-card" whileHover="hover" initial="initial" whileInView="animate" variants={fadeUp} viewport={{ once: true }}>
-            <div className="card-img" style={{ backgroundImage: 'url(/images/62DBBB6D-00CF-4025-B66D-CD0A0F948E77.jpg)' }}></div>
+            <div className="card-img" style={{ backgroundImage: 'url(/images/62DBBB6D-00CF-4025-B66D-CD0A0F948E77.webp)' }}></div>
             <div className="card-content">
               <h3>FASHION</h3>
               <p>Style, GRWM, Pakistani fashion, contemporary looks and personal expression.</p>
               <span className="explore-link">Explore Fashion <ArrowRight size={16} /></span>
             </div>
           </motion.div>
-          
+
           {/* Lifestyle */}
           <motion.div className="world-card" whileHover="hover" initial="initial" whileInView="animate" variants={fadeUp} viewport={{ once: true }}>
             <div className="card-img" style={{ backgroundImage: 'url(/images/IMG_9755.webp)' }}></div>
@@ -184,10 +184,10 @@ const Home = () => {
               <p>The places, experiences and everyday moments that make up life beyond the feed.</p>
             </div>
           </motion.div>
-          
+
           {/* Family & Culture */}
           <motion.div className="world-card" whileHover="hover" initial="initial" whileInView="animate" variants={fadeUp} viewport={{ once: true }}>
-            <div className="card-img" style={{ backgroundImage: 'url(/images/58C224F3-6E3A-41C4-871B-60A52F068701.jpg)' }}></div>
+            <div className="card-img" style={{ backgroundImage: 'url(/images/IMG_1179.webp)' }}></div>
             <div className="card-content">
               <h3>FAMILY & CULTURE</h3>
               <p>Family, relationships, Pakistani-American culture and the moments that people recognize.</p>
@@ -199,7 +199,7 @@ const Home = () => {
       {/* 05 - SIGNATURE CONTENT */}
       <section className="signature-section">
         <div className="container">
-          <motion.div 
+          <motion.div
             className="signature-header"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -208,11 +208,11 @@ const Home = () => {
             <h2 className="heading-md">The World of Wasme</h2>
             <p className="body-lg">Recurring series & personal touchpoints.</p>
           </motion.div>
-          
+
           <div className="signature-list">
             {['GRWM', 'MIL STORIES', 'MARRIED LIFE', 'DESI LIFE', 'EVERYDAY WASME'].map((item, i) => (
-              <motion.div 
-                key={i} 
+              <motion.div
+                key={i}
                 className="sig-item"
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -225,10 +225,10 @@ const Home = () => {
           </div>
         </div>
       </section>
-      
+
       {/* 06 - FEATURED WORK */}
       <section className="featured-section container">
-        <motion.h2 
+        <motion.h2
           className="section-title text-center heading-md"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -236,9 +236,9 @@ const Home = () => {
         >
           Selected Work
         </motion.h2>
-        
+
         <div className="campaign-cards">
-          <motion.div 
+          <motion.div
             className="campaign-card"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}

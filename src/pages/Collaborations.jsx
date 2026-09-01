@@ -105,7 +105,7 @@ const Collaborations = () => {
             
             {/* Case Study 2 */}
             <motion.div className="case-study-card reverse" {...fadeUp}>
-              <div className="case-img" style={{ backgroundImage: 'url(/images/24230D23-EA10-4D64-B521-27B9642A07BA.jpg)' }}></div>
+              <div className="case-img" style={{ backgroundImage: 'url(/images/24230D23-EA10-4D64-B521-27B9642A07BA.webp)' }}></div>
               <div className="case-content">
                 <div className="case-meta">
                   <span className="subheading">FASHION BRAND</span>

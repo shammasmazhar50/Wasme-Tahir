@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import './About.css';
 
 const fadeUp = {
@@ -9,8 +9,33 @@ const fadeUp = {
 };
 
 const About = () => {
+  const editorialRef = useRef(null);
+  
+  const { scrollYProgress } = useScroll({
+    target: editorialRef,
+    offset: ["start end", "end start"]
+  });
+
+  // Parallax shifts for subtle depth
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, -30]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [0, 20]);
+  const y3 = useTransform(scrollYProgress, [0, 1], [0, -10]);
+
+  // Option 1 Swap Logic: Highlight active picture based on scroll
+  const z1 = useTransform(scrollYProgress, p => p < 0.35 ? 10 : 1);
+  const z2 = useTransform(scrollYProgress, p => p >= 0.35 && p < 0.65 ? 10 : 2);
+  const z3 = useTransform(scrollYProgress, p => p >= 0.65 ? 10 : 3);
+  
+  const scale1 = useTransform(scrollYProgress, [0, 0.35, 0.4, 1], [1.05, 1.05, 1, 1]);
+  const scale2 = useTransform(scrollYProgress, [0, 0.3, 0.35, 0.65, 0.7, 1], [1, 1, 1.05, 1.05, 1, 1]);
+  const scale3 = useTransform(scrollYProgress, [0, 0.6, 0.65, 1], [1, 1, 1.05, 1.05]);
+  
+  const opacity1 = useTransform(scrollYProgress, [0, 0.35, 0.4, 1], [1, 1, 0.6, 0.6]);
+  const opacity2 = useTransform(scrollYProgress, [0, 0.3, 0.35, 0.65, 0.7, 1], [0.6, 0.6, 1, 1, 0.6, 0.6]);
+  const opacity3 = useTransform(scrollYProgress, [0, 0.6, 0.65, 1], [0.6, 0.6, 1, 1]);
+
   return (
-    <motion.div 
+    <motion.div
       className="about-page"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -18,10 +43,10 @@ const About = () => {
       transition={{ duration: 0.6 }}
     >
       <div className="container">
-        
+
         {/* HERO SECTION */}
         <section className="about-hero">
-          <motion.h1 
+          <motion.h1
             className="heading-xl text-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -29,8 +54,8 @@ const About = () => {
           >
             Meet Wasme
           </motion.h1>
-          
-          <motion.div 
+
+          <motion.div
             className="about-main-portrait"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -41,9 +66,9 @@ const About = () => {
         </section>
 
         {/* EDITORIAL CONTENT */}
-        <section className="about-editorial">
+        <section className="about-editorial" ref={editorialRef}>
           <div className="editorial-grid">
-            
+
             {/* Left Column: Text */}
             <div className="editorial-text">
               <motion.div className="editorial-block" {...fadeUp}>
@@ -69,7 +94,7 @@ const About = () => {
                   I find endless inspiration in the juxtaposition of my mother's vintage heirlooms against contemporary New York street style. Inspiration is everywhere—in the textures of traditional fabrics, the rhythm of a bustling city, and the quiet, humorous moments shared with family.
                 </p>
               </motion.div>
-              
+
               <motion.div className="editorial-block" {...fadeUp}>
                 <h3 className="subheading">Why culture matters</h3>
                 <h2 className="heading-md">It is the language we speak.</h2>
@@ -77,7 +102,7 @@ const About = () => {
                   Culture is the heartbeat of connection. In a digital space often curated to perfection, embracing cultural realities provides grounding and genuine connection with a global community that sees their own stories reflected in mine.
                 </p>
               </motion.div>
-              
+
               <motion.div className="editorial-block" {...fadeUp}>
                 <h3 className="subheading">What I believe about influence</h3>
                 <h2 className="heading-md">Influence is responsibility.</h2>
@@ -89,19 +114,28 @@ const About = () => {
 
             {/* Right Column: Gallery */}
             <div className="editorial-gallery">
-              <motion.div className="gallery-img" {...fadeUp}>
-                <img src="/images/62DBBB6D-00CF-4025-B66D-CD0A0F948E77.jpg" alt="Gallery image 1" />
+              <motion.div 
+                className="gallery-img" 
+                style={{ y: y1, zIndex: z1, scale: scale1, opacity: opacity1 }}
+              >
+                <img src="/images/IMG_8144.webp" alt="Gallery image 1" />
               </motion.div>
-              
-              <motion.div className="gallery-img gallery-img-offset" {...fadeUp}>
-                <img src="/images/5D2BE0DA-759F-468C-B889-C5367998DB6E.jpg" alt="Gallery image 2" />
+
+              <motion.div 
+                className="gallery-img" 
+                style={{ y: y2, zIndex: z2, scale: scale2, opacity: opacity2 }}
+              >
+                <img src="/images/IMG_4347.webp" alt="Gallery image 2" />
               </motion.div>
-              
-              <motion.div className="gallery-img" {...fadeUp}>
-                <img src="/images/58C224F3-6E3A-41C4-871B-60A52F068701.jpg" alt="Gallery image 3" />
+
+              <motion.div 
+                className="gallery-img" 
+                style={{ y: y3, zIndex: z3, scale: scale3, opacity: opacity3 }}
+              >
+                <img src="/images/IMG_0609.webp" alt="Gallery image 3" />
               </motion.div>
             </div>
-            
+
           </div>
         </section>
 

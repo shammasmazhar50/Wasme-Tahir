@@ -50,7 +50,7 @@ const Editorial = () => {
 
           <div className="archive-row two-col">
             <motion.div className="archive-item" {...fadeUp}>
-              <img src="/images/5D2BE0DA-759F-468C-B889-C5367998DB6E.jpg" alt="Editorial" />
+              <img src="/images/5D2BE0DA-759F-468C-B889-C5367998DB6E.webp" alt="Editorial" />
               <div className="archive-caption">
                 <span className="caption-cat">TRAVEL</span>
                 <p>Postcards from Italy</p>
@@ -58,7 +58,7 @@ const Editorial = () => {
               </div>
             </motion.div>
             <motion.div className="archive-item" {...fadeUp} transition={{ delay: 0.2 }}>
-              <img src="/images/58C224F3-6E3A-41C4-871B-60A52F068701.jpg" alt="Editorial" />
+              <img src="/images/58C224F3-6E3A-41C4-871B-60A52F068701.webp" alt="Editorial" />
               <div className="archive-caption">
                 <span className="caption-cat">BEAUTY</span>
                 <p>The Minimalist Routine</p>
@@ -68,7 +68,7 @@ const Editorial = () => {
           </div>
 
           <motion.div className="archive-item full-width" {...fadeUp}>
-            <img src="/images/7E924B31.webp" alt="Editorial" />
+            <img src="/images/IMG_9182.webp" alt="Editorial" />
             <div className="archive-caption">
               <span className="caption-cat">CULTURE</span>
               <p>Eid Celebrations</p>
