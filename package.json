@@ -4,7 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "predev": "node generate_blog_index.cjs",
     "dev": "vite",
+    "prebuild": "node generate_blog_index.cjs",
     "build": "vite build",
     "lint": "oxlint",
     "preview": "vite preview"
@@ -17,6 +19,7 @@
     "lucide-react": "^1.38.0",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
+    "react-markdown": "^10.1.0",
     "react-router-dom": "^7.18.3",
     "sharp": "^0.35.4"
   },

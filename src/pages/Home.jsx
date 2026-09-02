@@ -139,7 +139,7 @@ const Home = () => {
           >
             {[
               { num: '139K+', label: 'Instagram' },
-              { num: '119K+', label: 'TikTok' },
+              { num: '16K+', label: 'Youtube' },
               { num: 'X.XM+', label: 'Total video views' },
               { num: 'X.X%', label: 'Engagement' },
               { num: 'X.XM+', label: 'Highest-performing content' },

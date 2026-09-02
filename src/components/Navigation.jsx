@@ -66,11 +66,11 @@ const Navigation = () => {
           <Link to="/" className="brand-logo">
             WASME TAHIR
           </Link>
-          
+
           <nav className="desktop-nav">
             {navLinks.map((link) => (
-              <Link 
-                key={link.name} 
+              <Link
+                key={link.name}
                 to={link.path}
                 className={location.pathname === link.path ? 'active' : ''}
               >
@@ -94,7 +94,7 @@ const Navigation = () => {
 
       <AnimatePresence>
         {mobileMenuOpen && (
-          <motion.div 
+          <motion.div
             className="mobile-nav-overlay"
             initial={{ opacity: 0, y: '-100%' }}
             animate={{ opacity: 1, y: 0 }}
@@ -112,8 +112,8 @@ const Navigation = () => {
                   <Link to={link.path}>{link.name}</Link>
                 </motion.div>
               ))}
-              
-              <motion.div 
+
+              <motion.div
                 className="social-links mobile-social"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}

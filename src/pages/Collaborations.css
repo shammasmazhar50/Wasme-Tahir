@@ -27,7 +27,7 @@
   padding-bottom: 0.25rem;
   border-bottom: 1px solid transparent;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: color 0.3s ease, border-color 0.3s ease;
 }
 
 .collab-categories span:hover {
@@ -55,7 +55,7 @@
   font-family: var(--font-heading);
   font-size: 1.5rem;
   color: var(--color-muted-taupe);
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .logo-item:hover {

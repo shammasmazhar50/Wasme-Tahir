@@ -2,15 +2,15 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import './Editorial.css';
 
-const fadeUp = {
+const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 30 },
-  whileInView: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
+  whileInView: { opacity: 1, y: 0, transition: { duration: 0.8, delay, ease: [0.16, 1, 0.3, 1] } },
   viewport: { once: true, margin: "-50px" }
-};
+});
 
 const Editorial = () => {
   return (
-    <motion.div 
+    <motion.div
       className="editorial-page"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -19,7 +19,7 @@ const Editorial = () => {
     >
       <div className="container">
         <section className="editorial-header">
-          <motion.h1 
+          <motion.h1
             className="heading-xl text-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -27,7 +27,7 @@ const Editorial = () => {
           >
             Editorial Archive
           </motion.h1>
-          <motion.p 
+          <motion.p
             className="body-lg text-center header-desc"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -38,9 +38,9 @@ const Editorial = () => {
         </section>
 
         <section className="gallery-archive">
-          
-          <motion.div className="archive-item full-width" {...fadeUp}>
-            <img src="/images/IMG_6314.webp" alt="Editorial" />
+
+          <motion.div className="archive-item full-width" {...fadeUp()}>
+            <img src="/images/IMG_6904.webp" alt="Editorial" />
             <div className="archive-caption">
               <span className="caption-cat">FASHION</span>
               <p>Summer in the City</p>
@@ -49,16 +49,16 @@ const Editorial = () => {
           </motion.div>
 
           <div className="archive-row two-col">
-            <motion.div className="archive-item" {...fadeUp}>
-              <img src="/images/5D2BE0DA-759F-468C-B889-C5367998DB6E.webp" alt="Editorial" />
+            <motion.div className="archive-item" {...fadeUp()}>
+              <img src="/images/IMG_6535.webp" alt="Editorial" />
               <div className="archive-caption">
                 <span className="caption-cat">TRAVEL</span>
                 <p>Postcards from Italy</p>
                 <span className="caption-date">Jul 2026</span>
               </div>
             </motion.div>
-            <motion.div className="archive-item" {...fadeUp} transition={{ delay: 0.2 }}>
-              <img src="/images/58C224F3-6E3A-41C4-871B-60A52F068701.webp" alt="Editorial" />
+            <motion.div className="archive-item" {...fadeUp(0.2)}>
+              <img src="/images/IMG_7665.webp" alt="Editorial" />
               <div className="archive-caption">
                 <span className="caption-cat">BEAUTY</span>
                 <p>The Minimalist Routine</p>
@@ -67,7 +67,7 @@ const Editorial = () => {
             </motion.div>
           </div>
 
-          <motion.div className="archive-item full-width" {...fadeUp}>
+          <motion.div className="archive-item full-width" {...fadeUp()}>
             <img src="/images/IMG_9182.webp" alt="Editorial" />
             <div className="archive-caption">
               <span className="caption-cat">CULTURE</span>

@@ -11,7 +11,7 @@ const fadeUp = {
 
 const Collaborations = () => {
   return (
-    <motion.div 
+    <motion.div
       className="collab-page"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -20,15 +20,15 @@ const Collaborations = () => {
     >
       <div className="container">
         <section className="collab-header">
-          <motion.h1 
+          <motion.h1
             className="heading-lg text-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
           >
-            Brands I've had the pleasure<br/>of working with
+            Brands I've had the pleasure<br />of working with
           </motion.h1>
-          <motion.div 
+          <motion.div
             className="collab-categories"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -47,8 +47,8 @@ const Collaborations = () => {
           <div className="logo-grid">
             {/* Placeholder for logos */}
             {[...Array(12)].map((_, i) => (
-              <motion.div 
-                key={i} 
+              <motion.div
+                key={i}
                 className="logo-item"
                 {...fadeUp}
                 transition={{ delay: (i % 4) * 0.1 }}
@@ -60,7 +60,7 @@ const Collaborations = () => {
         </section>
 
         <section className="case-studies">
-          <motion.h2 
+          <motion.h2
             className="heading-lg text-center case-studies-title"
             {...fadeUp}
           >
@@ -76,7 +76,7 @@ const Collaborations = () => {
                   <span className="subheading">SENDWAVE</span>
                   <h3 className="heading-md">Connecting people across borders</h3>
                 </div>
-                
+
                 <div className="case-details">
                   <div className="detail-item">
                     <h4>The Brief</h4>
@@ -98,11 +98,11 @@ const Collaborations = () => {
                     <span>Likes</span>
                   </div>
                 </div>
-                
+
                 <button className="view-case-btn">Full Case Study <ArrowRight size={16} /></button>
               </div>
             </motion.div>
-            
+
             {/* Case Study 2 */}
             <motion.div className="case-study-card reverse" {...fadeUp}>
               <div className="case-img" style={{ backgroundImage: 'url(/images/24230D23-EA10-4D64-B521-27B9642A07BA.webp)' }}></div>
@@ -111,7 +111,7 @@ const Collaborations = () => {
                   <span className="subheading">FASHION BRAND</span>
                   <h3 className="heading-md">Fall/Winter Collection Launch</h3>
                 </div>
-                
+
                 <div className="case-details">
                   <div className="detail-item">
                     <h4>The Concept</h4>
@@ -129,7 +129,7 @@ const Collaborations = () => {
                     <span>Engagement</span>
                   </div>
                 </div>
-                
+
                 <button className="view-case-btn">Full Case Study <ArrowRight size={16} /></button>
               </div>
             </motion.div>

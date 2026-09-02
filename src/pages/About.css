@@ -76,9 +76,6 @@
   overflow: hidden;
   border-radius: 4px;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-  will-change: transform, opacity;
-  transform: translateZ(0);
-  backface-visibility: hidden;
 }
 
 .gallery-img:nth-child(1) {
@@ -134,6 +131,37 @@
   .editorial-gallery {
     position: relative;
     top: 0;
-    height: 70vh;
+    height: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .gallery-img {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    width: 100%;
+    box-shadow: none;
+    z-index: auto;
+  }
+
+  .gallery-img:nth-child(1),
+  .gallery-img:nth-child(2),
+  .gallery-img:nth-child(3) {
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    width: 100%;
+    aspect-ratio: 3/4;
+    z-index: auto;
+  }
+
+  .gallery-img:nth-child(1) {
+    grid-column: 1 / -1;
+    aspect-ratio: 16/9;
   }
 }

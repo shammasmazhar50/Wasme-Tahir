@@ -32,7 +32,8 @@
 }
 
 .full-width img {
-  aspect-ratio: 16/9;
+  aspect-ratio: 1/1;
+  object-position: center 25%;
 }
 
 .archive-caption {

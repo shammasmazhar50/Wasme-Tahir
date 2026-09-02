@@ -40,7 +40,7 @@
   border-radius: 2rem;
   width: fit-content;
   margin-top: 1rem;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease;
 }
 
 .download-btn:hover {
@@ -50,8 +50,6 @@
 .mk-header-img {
   width: 100%;
   aspect-ratio: 4/5;
-  will-change: transform, opacity;
-  transform: translateZ(0);
 }
 
 .mk-header-img img {

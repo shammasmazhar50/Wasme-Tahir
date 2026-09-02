@@ -10,7 +10,7 @@ const fadeUp = {
 
 const About = () => {
   const editorialRef = useRef(null);
-  
+
   const { scrollYProgress } = useScroll({
     target: editorialRef,
     offset: ["start end", "end start"]
@@ -25,11 +25,11 @@ const About = () => {
   const z1 = useTransform(scrollYProgress, p => p < 0.35 ? 10 : 1);
   const z2 = useTransform(scrollYProgress, p => p >= 0.35 && p < 0.65 ? 10 : 2);
   const z3 = useTransform(scrollYProgress, p => p >= 0.65 ? 10 : 3);
-  
+
   const scale1 = useTransform(scrollYProgress, [0, 0.35, 0.4, 1], [1.05, 1.05, 1, 1]);
   const scale2 = useTransform(scrollYProgress, [0, 0.3, 0.35, 0.65, 0.7, 1], [1, 1, 1.05, 1.05, 1, 1]);
   const scale3 = useTransform(scrollYProgress, [0, 0.6, 0.65, 1], [1, 1, 1.05, 1.05]);
-  
+
   const opacity1 = useTransform(scrollYProgress, [0, 0.35, 0.4, 1], [1, 1, 0.6, 0.6]);
   const opacity2 = useTransform(scrollYProgress, [0, 0.3, 0.35, 0.65, 0.7, 1], [0.6, 0.6, 1, 1, 0.6, 0.6]);
   const opacity3 = useTransform(scrollYProgress, [0, 0.6, 0.65, 1], [0.6, 0.6, 1, 1]);
@@ -114,22 +114,22 @@ const About = () => {
 
             {/* Right Column: Gallery */}
             <div className="editorial-gallery">
-              <motion.div 
-                className="gallery-img" 
+              <motion.div
+                className="gallery-img"
                 style={{ y: y1, zIndex: z1, scale: scale1, opacity: opacity1 }}
               >
                 <img src="/images/IMG_8144.webp" alt="Gallery image 1" />
               </motion.div>
 
-              <motion.div 
-                className="gallery-img" 
+              <motion.div
+                className="gallery-img"
                 style={{ y: y2, zIndex: z2, scale: scale2, opacity: opacity2 }}
               >
                 <img src="/images/IMG_4347.webp" alt="Gallery image 2" />
               </motion.div>
 
-              <motion.div 
-                className="gallery-img" 
+              <motion.div
+                className="gallery-img"
                 style={{ y: y3, zIndex: z3, scale: scale3, opacity: opacity3 }}
               >
                 <img src="/images/IMG_0609.webp" alt="Gallery image 3" />
