@@ -81,9 +81,9 @@ const Navigation = () => {
 
           <div className="social-links desktop-social">
             <a href="https://instagram.com/wasmetahir?igsi=MXVndXRpa3pteGxodA==" target="_blank" rel="noreferrer"><InstagramIcon size={20} /></a>
-            <a href="#" target="_blank" rel="noreferrer"><TikTokIcon size={20} /></a>
+            <a href="https://www.tiktok.com/@wasmetahir" target="_blank" rel="noreferrer"><TikTokIcon size={20} /></a>
             <a href="https://www.youtube.com/@wasmetahir" target="_blank" rel="noreferrer"><YoutubeIcon size={20} /></a>
-            <a href="#" target="_blank" rel="noreferrer"><FacebookIcon size={20} /></a>
+            <a href="https://www.facebook.com/p/Wasme-Tahir-61578603143089/" target="_blank" rel="noreferrer"><FacebookIcon size={20} /></a>
           </div>
 
           <button className="mobile-menu-btn" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
@@ -120,9 +120,9 @@ const Navigation = () => {
                 transition={{ delay: navLinks.length * 0.1 + 0.2 }}
               >
                 <a href="https://instagram.com/wasmetahir?igsi=MXVndXRpa3pteGxodA==" target="_blank" rel="noreferrer"><InstagramIcon size={24} /></a>
-                <a href="#" target="_blank" rel="noreferrer"><TikTokIcon size={24} /></a>
+                <a href="https://www.tiktok.com/@wasmetahir" target="_blank" rel="noreferrer"><TikTokIcon size={24} /></a>
                 <a href="https://www.youtube.com/@wasmetahir" target="_blank" rel="noreferrer"><YoutubeIcon size={24} /></a>
-                <a href="#" target="_blank" rel="noreferrer"><FacebookIcon size={24} /></a>
+                <a href="https://www.facebook.com/p/Wasme-Tahir-61578603143089/" target="_blank" rel="noreferrer"><FacebookIcon size={24} /></a>
               </motion.div>
             </nav>
           </motion.div>

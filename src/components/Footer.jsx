@@ -42,9 +42,9 @@ const Footer = () => {
           <div className="footer-links">
             <div className="footer-column">
               <a href="https://instagram.com/wasmetahir?igsi=MXVndXRpa3pteGxodA==" target="_blank" rel="noreferrer"><InstagramIcon size={20} /> Instagram</a>
-              <a href="#" target="_blank" rel="noreferrer"><TikTokIcon size={20} /> TikTok</a>
+              <a href="https://www.tiktok.com/@wasmetahir" target="_blank" rel="noreferrer"><TikTokIcon size={20} /> TikTok</a>
               <a href="https://www.youtube.com/@wasmetahir" target="_blank" rel="noreferrer"><YoutubeIcon size={20} /> YouTube</a>
-              <a href="#" target="_blank" rel="noreferrer"><FacebookIcon size={20} /> Facebook</a>
+              <a href="https://www.facebook.com/p/Wasme-Tahir-61578603143089/" target="_blank" rel="noreferrer"><FacebookIcon size={20} /> Facebook</a>
             </div>
             <div className="footer-column">
               <Link to="/press">Press & PR</Link>

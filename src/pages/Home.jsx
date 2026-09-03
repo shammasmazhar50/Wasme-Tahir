@@ -138,12 +138,10 @@ const Home = () => {
             viewport={{ once: true }}
           >
             {[
-              { num: '139K+', label: 'Instagram' },
-              { num: '16K+', label: 'Youtube' },
-              { num: 'X.XM+', label: 'Total video views' },
-              { num: 'X.X%', label: 'Engagement' },
-              { num: 'X.XM+', label: 'Highest-performing content' },
-              { num: 'XX+', label: 'Brand collaborations' }
+              { num: '75M+', label: 'TikTok Views' },
+              { num: '117M+', label: 'Instagram Views' },
+              { num: '8M+', label: 'Facebook Views' },
+              { num: '32M+', label: 'Youtube Views' }
             ].map((stat, i) => (
               <motion.div key={i} className="stat-item" variants={fadeUp}>
                 <h4 className="stat-num">{stat.num}</h4>

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://wasme-tahir.pages.dev/sitemap.xml
+Sitemap: https://wasmetahir.com/sitemap.xml
