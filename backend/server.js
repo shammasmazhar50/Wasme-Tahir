@@ -136,7 +136,7 @@ app.use('/uploads', express.static(UPLOADS_DIR, {
   lastModified: true,
 }));
 
-/* 7. Global public-API rate limiter */
+/* 7. Global public-API rate limiter & No-Cache */
 const globalLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 200,                  // 200 requests per window per IP
@@ -144,7 +144,14 @@ const globalLimiter = rateLimit({
   legacyHeaders: false,
   message: { message: 'Too many requests. Please slow down.' },
 });
-app.use('/api', globalLimiter);
+
+app.use('/api', (req, res, next) => {
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+  res.setHeader('Pragma', 'no-cache');
+  res.setHeader('Expires', '0');
+  res.setHeader('Surrogate-Control', 'no-store');
+  next();
+}, globalLimiter);
 
 /* ── Upload endpoint ─────────────────────── */
 const auth = require('./middleware/authMiddleware');
