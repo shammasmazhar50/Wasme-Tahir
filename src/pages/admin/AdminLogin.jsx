@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Lock, Mail, Eye, EyeOff, AlertCircle, ArrowRight, ShieldCheck, HelpCircle } from 'lucide-react';
 
-const API = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+const API = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? 'http://localhost:6002' : 'https://api.wasmetahir.com');
 
 const AdminLogin = () => {
   const [email, setEmail] = useState('');

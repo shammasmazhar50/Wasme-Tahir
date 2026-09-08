@@ -15,7 +15,7 @@ const MediaKit = () => {
   const [brands, setBrands] = useState([]);
 
   useEffect(() => {
-    const API = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+    const API = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? 'http://localhost:6002' : 'https://api.wasmetahir.com');
     fetch(`${API}/api/stats`).then(res => res.json()).then(data => setStats(data));
     fetch(`${API}/api/collab/demographics`).then(res => res.json()).then(data => setDemographics(data));
     fetch(`${API}/api/collab/brands`).then(res => res.json()).then(data => setBrands(data));

@@ -4,7 +4,7 @@ import SimpleMdeReact from 'react-simplemde-editor';
 import 'easymde/dist/easymde.min.css';
 import './Admin.css';
 
-const API = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+const API = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? 'http://localhost:6002' : 'https://api.wasmetahir.com');
 
 /* ─── Toast ──────────────────────────────── */
 const Toast = ({ message, type, onClose }) => {
