@@ -6,6 +6,15 @@
 
 require('dotenv').config();
 
+/* ── Environment Validation ─────────────── */
+const requiredEnvs = ['JWT_SECRET', 'DB_PASS', 'ALLOWED_ORIGINS'];
+const missingEnvs = requiredEnvs.filter(env => !process.env[env]);
+if (missingEnvs.length > 0) {
+  console.error(`[FATAL ERROR] Missing required environment variables: ${missingEnvs.join(', ')}`);
+  console.error('Please check your backend/.env file and restart the server.');
+  process.exit(1);
+}
+
 const express  = require('express');
 const path     = require('path');
 const fs       = require('fs');
@@ -99,8 +108,12 @@ const ALLOWED_ORIGINS = process.env.NODE_ENV === 'production'
 app.use(cors({
   origin: (origin, cb) => {
     // Allow server-to-server requests (no origin) and whitelisted origins
-    if (!origin || ALLOWED_ORIGINS.includes(origin)) cb(null, true);
-    else cb(new Error(`CORS: ${origin} not allowed`));
+    if (!origin || ALLOWED_ORIGINS.includes(origin)) {
+      cb(null, true);
+    } else {
+      console.error(`[CORS BLOCKED] Rejected origin: ${origin}`);
+      cb(new Error(`CORS: ${origin} not allowed`));
+    }
   },
   credentials: true,
   optionsSuccessStatus: 200,
