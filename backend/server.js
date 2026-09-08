@@ -63,6 +63,7 @@ const upload = multer({
 
 /* ── Express App ─────────────────────────── */
 const app = express();
+app.set('trust proxy', 1); // Trust Cloudflare Tunnel proxy
 
 /* 0. Cookie Parser */
 app.use(cookieParser());
