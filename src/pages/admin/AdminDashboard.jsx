@@ -792,6 +792,7 @@ const AdminDashboard = () => {
                   <div className="field-group" style={{ flex: 1 }}>
                     <label className="field-label">Username</label>
                     <input className="field-input" value={u.username || ''}
+                      disabled={u.username === 'admin'}
                       onChange={e => updateLocal(users, setUsers, u.id, 'username', e.target.value)} />
                   </div>
                   <div className="field-group" style={{ flex: 1 }}>
@@ -802,6 +803,7 @@ const AdminDashboard = () => {
                   <div className="field-group" style={{ flex: 1 }}>
                     <label className="field-label">Role</label>
                     <select className="field-select" value={u.role || 'author'}
+                      disabled={u.username === 'admin'}
                       onChange={e => updateLocal(users, setUsers, u.id, 'role', e.target.value)}>
                       <option value="admin">Admin (Full Access)</option>
                       <option value="author">Author (Blogs Only)</option>
@@ -809,7 +811,11 @@ const AdminDashboard = () => {
                   </div>
                 </div>
                 <div className="card-actions">
-                  <button className="btn-danger" onClick={() => deleteGeneric('users', u.id, users, setUsers)}>Delete</button>
+                  {u.username !== 'admin' ? (
+                    <button className="btn-danger" onClick={() => deleteGeneric('users', u.id, users, setUsers)}>Delete</button>
+                  ) : (
+                    <div style={{width: 60}}></div>
+                  )}
                   <button className="btn-save" onClick={() => saveGeneric('users', u, users, setUsers)}>Save</button>
                 </div>
               </div>

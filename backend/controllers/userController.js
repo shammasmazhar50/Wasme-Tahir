@@ -51,6 +51,15 @@ exports.updateUser = async (req, res) => {
       return res.status(404).json({ message: 'User not found' });
     }
 
+    if (user.username === 'admin') {
+      if (username && username !== 'admin') {
+        return res.status(400).json({ message: 'Cannot change the username of the main admin' });
+      }
+      if (role && role !== 'admin') {
+        return res.status(400).json({ message: 'Cannot change the role of the main admin' });
+      }
+    }
+
     if (username) user.username = username;
     if (role) user.role = role;
     
@@ -79,6 +88,10 @@ exports.deleteUser = async (req, res) => {
     const user = await User.findByPk(id);
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
+    }
+
+    if (user.username === 'admin') {
+      return res.status(400).json({ message: 'Cannot delete the main admin account' });
     }
 
     await user.destroy();
