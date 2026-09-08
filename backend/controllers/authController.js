@@ -49,14 +49,9 @@ exports.login = async (req, res) => {
       { expiresIn: process.env.JWT_EXPIRES_IN || '8h' }
     );
 
-    res.cookie('adminToken', token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'none',
-      maxAge: 8 * 60 * 60 * 1000 // 8 hours
-    });
-
-    res.json({ success: true, role: user.role, username: user.username });
+    // Return token in body — cross-domain cookie auth doesn't work reliably
+    // across different domains (Cloudflare Pages vs Cloudflare Tunnel).
+    res.json({ success: true, token, role: user.role, username: user.username });
   } catch (error) {
     console.error('[AUTH ERROR]', error.message);
     res.status(500).json({ message: 'An error occurred. Please try again.' });
@@ -64,11 +59,7 @@ exports.login = async (req, res) => {
 };
 
 exports.logout = (req, res) => {
-  res.clearCookie('adminToken', {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === 'production',
-    sameSite: 'none'
-  });
+  // No cookie to clear — client handles logout by deleting the token from localStorage
   res.json({ message: 'Logged out successfully' });
 };
 

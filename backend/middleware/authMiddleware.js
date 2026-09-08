@@ -3,6 +3,8 @@ const jwt = require('jsonwebtoken');
 const JWT_SECRET = process.env.JWT_SECRET;
 
 module.exports = async (req, res, next) => {
+  console.log(`[AUTH DEBUG] Origin: ${req.headers.origin}`);
+  console.log(`[AUTH DEBUG] Cookies:`, req.cookies);
   let token = null;
 
   if (req.cookies && req.cookies.adminToken) {

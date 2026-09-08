@@ -49,7 +49,11 @@ const AdminDashboard = () => {
   const [authLoading, setAuthLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`${API}/api/auth/me`, { credentials: 'include' })
+    const token = localStorage.getItem('adminToken');
+    if (!token) { setAuthLoading(false); return; }
+    fetch(`${API}/api/auth/me`, {
+      headers: { 'Authorization': `Bearer ${token}` }
+    })
       .then(r => r.json())
       .then(data => {
         if (data.role) setUserPayload(data);
@@ -74,9 +78,13 @@ const AdminDashboard = () => {
 
   const navigate = useNavigate();
 
-  const authH = useMemo(() => ({
-    'Content-Type': 'application/json',
-  }), []);
+  const authH = useMemo(() => {
+    const token = localStorage.getItem('adminToken');
+    return {
+      'Content-Type': 'application/json',
+      ...(token ? { 'Authorization': `Bearer ${token}` } : {}),
+    };
+  }, []);
 
   const showToast = useCallback((message, type = 'success') =>
     setToast({ message, type }), []);
@@ -86,6 +94,8 @@ const AdminDashboard = () => {
     setLoading(true);
     try {
       const isAuthor = userRole === 'author';
+      const token = localStorage.getItem('adminToken');
+      const bearerH = token ? { 'Authorization': `Bearer ${token}` } : {};
       const promises = [fetch(`${API}/api/posts`)];
       
       if (!isAuthor) {
@@ -93,8 +103,8 @@ const AdminDashboard = () => {
         promises.push(fetch(`${API}/api/collab/brands`));
         promises.push(fetch(`${API}/api/collab/demographics`));
         promises.push(fetch(`${API}/api/collab/cases`));
-        promises.push(fetch(`${API}/api/contact`, { credentials: 'include' }));
-        promises.push(fetch(`${API}/api/users`, { credentials: 'include' }));
+        promises.push(fetch(`${API}/api/contact`, { headers: bearerH }));
+        promises.push(fetch(`${API}/api/users`, { headers: bearerH }));
       }
 
       const res = await Promise.all(promises);
@@ -120,7 +130,12 @@ const AdminDashboard = () => {
   useEffect(() => { fetchAll(); }, [fetchAll]);
 
   const logout = async () => {
-    await fetch(`${API}/api/auth/logout`, { method: 'POST', credentials: 'include' });
+    const token = localStorage.getItem('adminToken');
+    await fetch(`${API}/api/auth/logout`, {
+      method: 'POST',
+      headers: { 'Authorization': `Bearer ${token}` }
+    }).catch(() => {});
+    localStorage.removeItem('adminToken');
     navigate('/admin/login');
   };
 

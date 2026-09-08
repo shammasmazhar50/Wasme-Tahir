@@ -142,9 +142,14 @@ const AdminLogin = () => {
         return;
       }
 
+      // Store token in localStorage for cross-domain auth
+      if (data.token) {
+        localStorage.setItem('adminToken', data.token);
+      }
+
       setLoading(false);
       setSuccess(true);
-      
+
       setTimeout(() => setIsExiting(true), 120);
       setTimeout(() => {
         navigate('/admin/dashboard', { replace: true });

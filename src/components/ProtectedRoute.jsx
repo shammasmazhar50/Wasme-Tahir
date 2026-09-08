@@ -7,10 +7,21 @@ const ProtectedRoute = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(null);
 
   useEffect(() => {
-    fetch(`${API}/api/auth/me`, { credentials: 'include' })
+    const token = localStorage.getItem('adminToken');
+    if (!token) {
+      setIsAuthenticated(false);
+      return;
+    }
+
+    fetch(`${API}/api/auth/me`, {
+      headers: { 'Authorization': `Bearer ${token}` }
+    })
       .then(res => {
         if (res.ok) setIsAuthenticated(true);
-        else setIsAuthenticated(false);
+        else {
+          localStorage.removeItem('adminToken');
+          setIsAuthenticated(false);
+        }
       })
       .catch(() => setIsAuthenticated(false));
   }, []);
@@ -18,7 +29,7 @@ const ProtectedRoute = () => {
   if (isAuthenticated === null) {
     return (
       <div style={{
-        minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', 
+        minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center',
         fontFamily: 'sans-serif', color: '#999', fontSize: '0.875rem'
       }}>
         Authenticating...
