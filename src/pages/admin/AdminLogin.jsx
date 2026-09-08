@@ -674,6 +674,11 @@ const AdminLogin = () => {
             )}
 
             <div className="auth-footer">
+              <div style={{ marginBottom: '16px' }}>
+                <button type="button" onClick={() => navigate('/')} className="auth-link" style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '0.85rem' }}>
+                  ← Back to Website
+                </button>
+              </div>
               <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}>
                 <span title="Secured with Enterprise-grade encryption by Syvrox" style={{ display: 'flex', alignItems: 'center', cursor: 'help' }}>
                   <HelpCircle size={14} />
