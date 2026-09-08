@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import SEO from '../components/SEO';
 import { Download, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { getBlogs } from '../utils/blogLoader';
 import './Press.css';
 
 const fadeUp = (delay = 0) => ({
@@ -13,7 +13,18 @@ const fadeUp = (delay = 0) => ({
 
 const Press = () => {
   const [visibleBlogs, setVisibleBlogs] = useState(6);
-  const allBlogs = getBlogs();
+  const [allBlogs, setAllBlogs] = useState([]);
+
+  React.useEffect(() => {
+    const API = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+    fetch(`${API}/api/posts`)
+      .then(res => res.json())
+      .then(data => {
+        // filter published only
+        setAllBlogs(data.filter(p => p.published));
+      })
+      .catch(console.error);
+  }, []);
 
   const loadMore = () => {
     setVisibleBlogs(prev => prev + 6);
@@ -27,6 +38,10 @@ const Press = () => {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.6 }}
     >
+      <SEO 
+        title="Press | Wasme Tahir" 
+        url="https://wasmetahir.com/press" 
+      />
       <div className="container">
 
         <section className="press-header">
@@ -55,13 +70,15 @@ const Press = () => {
             <motion.div className="article-row" {...fadeUp(index * 0.1)} key={blog.slug || blog.fileSlug}>
               <div className="article-img">
                 <img 
-                  src={blog.image} 
+                  src={blog.coverImage || '/images/default-blog.webp'} 
                   alt={blog.title} 
-                  style={{ objectPosition: blog.imagePosition || 'center' }} 
+                  loading="lazy"
+                  decoding="async"
+                  style={{ objectPosition: 'center' }} 
                 />
               </div>
               <div className="article-content">
-                <span className="subheading">{blog.category}</span>
+                <span className="subheading">{blog.category || 'EDITORIAL'}</span>
                 <h3 className="heading-md">{blog.title}</h3>
                 <Link to={`/press/${blog.slug || blog.fileSlug}`} className="read-more">
                   Read Feature <ArrowRight size={16} />

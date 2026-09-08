@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowDown, ArrowRight } from 'lucide-react';
+import SEO from '../components/SEO';
 import './Home.css';
 
 const fadeUp = {
@@ -15,6 +16,25 @@ const staggerContainer = {
 const Home = () => {
   const { scrollY } = useScroll();
   const heroBgY = useTransform(scrollY, [0, 1000], ['0%', '30%']);
+  
+  const [stats, setStats] = useState([
+    { num: '75M+', label: 'TikTok Views' },
+    { num: '117M+', label: 'Instagram Views' },
+    { num: '8M+', label: 'Facebook Views' },
+    { num: '32M+', label: 'Youtube Views' }
+  ]);
+
+  useEffect(() => {
+    const API = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+    fetch(`${API}/api/stats`)
+      .then(res => res.json())
+      .then(data => {
+        if (data && data.length > 0) {
+          setStats(data.map(d => ({ num: d.value, label: d.label })));
+        }
+      })
+      .catch(err => console.error('Failed to fetch stats', err));
+  }, []);
 
   return (
     <motion.div
@@ -24,6 +44,11 @@ const Home = () => {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
     >
+      <SEO 
+        title="Wasme Tahir | Digital Creator, Fashion & Lifestyle" 
+        url="https://wasmetahir.com/" 
+      />
+
       {/* 01 - HERO */}
       <section className="hero-section">
         {/* Placeholder for video */}
@@ -137,12 +162,7 @@ const Home = () => {
             whileInView="animate"
             viewport={{ once: true }}
           >
-            {[
-              { num: '75M+', label: 'TikTok Views' },
-              { num: '117M+', label: 'Instagram Views' },
-              { num: '8M+', label: 'Facebook Views' },
-              { num: '32M+', label: 'Youtube Views' }
-            ].map((stat, i) => (
+            {stats.map((stat, i) => (
               <motion.div key={i} className="stat-item" variants={fadeUp}>
                 <h4 className="stat-num">{stat.num}</h4>
                 <span className="stat-label">{stat.label}</span>

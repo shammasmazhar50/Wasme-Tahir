@@ -12,6 +12,17 @@ dist
 dist-ssr
 *.local
 
+# Environment variables — NEVER commit secrets
+.env
+.env.*
+!.env.production.example
+
+# SQLite database (local dev only)
+backend/database.sqlite
+
+# Uploaded images (large binary files, serve from server)
+backend/uploads/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

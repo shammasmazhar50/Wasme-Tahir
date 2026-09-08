@@ -27,14 +27,14 @@ const Contact = () => {
     e.preventDefault();
     setStatus('loading');
 
-    const formPayload = new FormData(e.target);
-    // TODO: The user must replace this with their actual Access Key from https://web3forms.com
-    formPayload.append("access_key", "YOUR_ACCESS_KEY_HERE");
-
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
+      const API = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+      const response = await fetch(`${API}/api/contact`, {
         method: "POST",
-        body: formPayload
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
       });
 
       const data = await response.json();
@@ -98,11 +98,6 @@ const Contact = () => {
             ) : (
               <form className="contact-form" onSubmit={handleSubmit}>
 
-                {/* Web3Forms Advanced Config */}
-                <input type="hidden" name="subject" value="New Contact Inquiry from WasmeTahir.com" />
-                <input type="hidden" name="from_name" value="Wasme Tahir Website" />
-                {/* Honeypot field to stop spam bots */}
-                <input type="checkbox" name="botcheck" className="hidden" style={{ display: 'none' }} />
 
                 {status === 'error' && (
                   <div className="error-message" style={{ color: 'red', marginBottom: '1rem' }}>

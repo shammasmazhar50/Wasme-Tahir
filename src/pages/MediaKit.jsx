@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Download } from 'lucide-react';
 import './MediaKit.css';
@@ -10,6 +10,17 @@ const fadeUp = (delay = 0) => ({
 });
 
 const MediaKit = () => {
+  const [stats, setStats] = useState([]);
+  const [demographics, setDemographics] = useState([]);
+  const [brands, setBrands] = useState([]);
+
+  useEffect(() => {
+    const API = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+    fetch(`${API}/api/stats`).then(res => res.json()).then(data => setStats(data));
+    fetch(`${API}/api/collab/demographics`).then(res => res.json()).then(data => setDemographics(data));
+    fetch(`${API}/api/collab/brands`).then(res => res.json()).then(data => setBrands(data));
+  }, []);
+
   return (
     <motion.div 
       className="media-kit-page"
@@ -22,12 +33,7 @@ const MediaKit = () => {
         <section className="mk-header">
           <div className="mk-header-text">
             <motion.span className="subheading" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>MEDIA KIT 2026</motion.span>
-            <motion.h1 
-              className="heading-lg"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-            >
+            <motion.h1 className="heading-lg" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>
               Wasme Tahir
             </motion.h1>
             <motion.p className="body-lg" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}>
@@ -48,46 +54,36 @@ const MediaKit = () => {
             <h2 className="heading-lg">155K+</h2>
             <p>Across all platforms</p>
           </motion.div>
-          <motion.div className="mk-stat-box" {...fadeUp(0.1)}>
-            <span className="subheading">INSTAGRAM</span>
-            <h2 className="heading-md">139K+</h2>
-            <p>Followers</p>
-          </motion.div>
-          <motion.div className="mk-stat-box" {...fadeUp(0.2)}>
-            <span className="subheading">YOUTUBE</span>
-            <h2 className="heading-md">16K+</h2>
-            <p>Subscribers</p>
-          </motion.div>
+          {stats.slice(0, 2).map((s, i) => (
+             <motion.div key={s.id} className="mk-stat-box" {...fadeUp((i+1)*0.1)}>
+               <span className="subheading">{s.platform.toUpperCase()}</span>
+               <h2 className="heading-md">{s.value}</h2>
+               <p>{s.label}</p>
+             </motion.div>
+          ))}
         </section>
 
         <section className="mk-audience">
           <motion.h3 className="heading-md" {...fadeUp()}>Audience Demographics</motion.h3>
           <div className="audience-grid">
-            <motion.div className="audience-card" {...fadeUp()}>
-              <h4>Gender</h4>
-              <div className="demo-bar"><div className="demo-fill" style={{ width: '85%' }}></div></div>
-              <p>85% Female / 15% Male</p>
-            </motion.div>
-            <motion.div className="audience-card" {...fadeUp(0.1)}>
-              <h4>Age</h4>
-              <div className="demo-bar"><div className="demo-fill" style={{ width: '65%' }}></div></div>
-              <p>65% 25-34 Years Old</p>
-            </motion.div>
-            <motion.div className="audience-card" {...fadeUp(0.2)}>
-              <h4>Top Locations</h4>
-              <p>1. New York, USA<br/>2. London, UK<br/>3. Toronto, Canada</p>
-            </motion.div>
+            {demographics.map((d, i) => (
+              <motion.div key={d.id} className="audience-card" {...fadeUp(i*0.1)}>
+                <h4>{d.category}</h4>
+                {d.category.toLowerCase().includes('age') || d.category.toLowerCase().includes('gender') ? (
+                  <div className="demo-bar"><div className="demo-fill" style={{ width: '75%' }}></div></div>
+                ) : null}
+                <p style={{whiteSpace: 'pre-line'}}>{d.data}</p>
+              </motion.div>
+            ))}
           </div>
         </section>
         
         <section className="mk-partnerships">
           <motion.h3 className="heading-md text-center" {...fadeUp()}>Selected Partnerships</motion.h3>
           <motion.div className="mk-logos" {...fadeUp()}>
-            <span>SENDWAVE</span>
-            <span>SEPHORA</span>
-            <span>REVOLVE</span>
-            <span>DYSON</span>
-            <span>KHAADI</span>
+            {brands.map(b => (
+              <span key={b.id}>{b.name}</span>
+            ))}
           </motion.div>
         </section>
 

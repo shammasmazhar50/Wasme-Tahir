@@ -174,7 +174,6 @@ button {
   }
 }
 
-/* Respect users who prefer reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -182,4 +181,9 @@ button {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* Global utility keyframe used by loaders */
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import SEO from '../components/SEO';
 import './Editorial.css';
 
 const fadeUp = (delay = 0) => ({
@@ -17,6 +18,10 @@ const Editorial = () => {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.6 }}
     >
+      <SEO 
+        title="Editorial | Wasme Tahir" 
+        url="https://wasmetahir.com/editorial" 
+      />
       <div className="container">
         <section className="editorial-header">
           <motion.h1
@@ -50,7 +55,7 @@ const Editorial = () => {
 
           <div className="archive-row two-col">
             <motion.div className="archive-item" {...fadeUp()}>
-              <img src="/images/IMG_6535.webp" alt="Editorial" />
+              <img src="/images/IMG_6535.webp" alt="Editorial" loading="lazy" decoding="async" />
               <div className="archive-caption">
                 <span className="caption-cat">TRAVEL</span>
                 <p>Postcards from Italy</p>
@@ -58,7 +63,7 @@ const Editorial = () => {
               </div>
             </motion.div>
             <motion.div className="archive-item" {...fadeUp(0.2)}>
-              <img src="/images/IMG_7665.webp" alt="Editorial" />
+              <img src="/images/IMG_7665.webp" alt="Editorial" loading="lazy" decoding="async" />
               <div className="archive-caption">
                 <span className="caption-cat">BEAUTY</span>
                 <p>The Minimalist Routine</p>
@@ -68,7 +73,7 @@ const Editorial = () => {
           </div>
 
           <motion.div className="archive-item full-width" {...fadeUp()}>
-            <img src="/images/IMG_9182.webp" alt="Editorial" />
+            <img src="/images/IMG_9182.webp" alt="Editorial" loading="lazy" decoding="async" />
             <div className="archive-caption">
               <span className="caption-cat">CULTURE</span>
               <p>Eid Celebrations</p>

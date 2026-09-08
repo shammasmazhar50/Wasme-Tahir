@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import SEO from '../components/SEO';
 import './About.css';
 
 const fadeUp = {
@@ -42,6 +43,10 @@ const About = () => {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.6 }}
     >
+      <SEO 
+        title="About | Wasme Tahir" 
+        url="https://wasmetahir.com/about" 
+      />
       <div className="container">
 
         {/* HERO SECTION */}
@@ -118,21 +123,21 @@ const About = () => {
                 className="gallery-img"
                 style={{ y: y1, zIndex: z1, scale: scale1, opacity: opacity1 }}
               >
-                <img src="/images/IMG_8144.webp" alt="Gallery image 1" />
+                <img src="/images/IMG_8144.webp" alt="Gallery image 1" loading="lazy" decoding="async" />
               </motion.div>
 
               <motion.div
                 className="gallery-img"
                 style={{ y: y2, zIndex: z2, scale: scale2, opacity: opacity2 }}
               >
-                <img src="/images/IMG_4347.webp" alt="Gallery image 2" />
+                <img src="/images/IMG_4347.webp" alt="Gallery image 2" loading="lazy" decoding="async" />
               </motion.div>
 
               <motion.div
                 className="gallery-img"
                 style={{ y: y3, zIndex: z3, scale: scale3, opacity: opacity3 }}
               >
-                <img src="/images/IMG_0609.webp" alt="Gallery image 3" />
+                <img src="/images/IMG_0609.webp" alt="Gallery image 3" loading="lazy" decoding="async" />
               </motion.div>
             </div>
 

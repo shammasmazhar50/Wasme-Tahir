@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import SEO from '../components/SEO';
 import { ArrowRight } from 'lucide-react';
 import './Collaborations.css';
 
@@ -10,6 +11,15 @@ const fadeUp = {
 };
 
 const Collaborations = () => {
+  const [brands, setBrands] = useState([]);
+  const [caseStudies, setCaseStudies] = useState([]);
+
+  useEffect(() => {
+    const API = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+    fetch(`${API}/api/collab/brands`).then(res => res.json()).then(data => setBrands(data));
+    fetch(`${API}/api/collab/cases`).then(res => res.json()).then(data => setCaseStudies(data));
+  }, []);
+
   return (
     <motion.div
       className="collab-page"
@@ -18,121 +28,79 @@ const Collaborations = () => {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.6 }}
     >
+      <SEO 
+        title="Collaborations | Wasme Tahir" 
+        url="https://wasmetahir.com/collaborations" 
+      />
       <div className="container">
         <section className="collab-header">
-          <motion.h1
-            className="heading-lg text-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-          >
+          <motion.h1 className="heading-lg text-center" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }}>
             Brands I've had the pleasure<br />of working with
           </motion.h1>
-          <motion.div
-            className="collab-categories"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.4 }}
-          >
-            <span>Fashion</span>
-            <span>Beauty</span>
-            <span>Lifestyle</span>
-            <span>Food & Beverage</span>
-            <span>Finance / Services</span>
-            <span>Travel</span>
+          <motion.div className="collab-categories" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 0.4 }}>
+            <span>Fashion</span><span>Beauty</span><span>Lifestyle</span><span>Food & Beverage</span><span>Finance / Services</span><span>Travel</span>
           </motion.div>
         </section>
 
         <section className="collab-logos">
           <div className="logo-grid">
-            {/* Placeholder for logos */}
-            {[...Array(12)].map((_, i) => (
-              <motion.div
-                key={i}
-                className="logo-item"
-                {...fadeUp}
-                transition={{ delay: (i % 4) * 0.1 }}
-              >
-                BRAND {i + 1}
+            {brands.map((b, i) => (
+              <motion.div key={b.id} className="logo-item" {...fadeUp} transition={{ delay: (i % 4) * 0.1 }}>
+                {b.name}
               </motion.div>
             ))}
           </div>
         </section>
 
         <section className="case-studies">
-          <motion.h2
-            className="heading-lg text-center case-studies-title"
-            {...fadeUp}
-          >
+          <motion.h2 className="heading-lg text-center case-studies-title" {...fadeUp}>
             Case Studies
           </motion.h2>
 
           <div className="case-study-list">
-            {/* Case Study 1 */}
-            <motion.div className="case-study-card" {...fadeUp}>
-              <div className="case-img" style={{ backgroundImage: 'url(/images/7E924B31.webp)' }}></div>
-              <div className="case-content">
-                <div className="case-meta">
-                  <span className="subheading">SENDWAVE</span>
-                  <h3 className="heading-md">Connecting people across borders</h3>
+            {caseStudies.map((cs, i) => (
+              <motion.div key={cs.id} className={`case-study-card ${i % 2 !== 0 ? 'reverse' : ''}`} {...fadeUp}>
+                <div className="case-img" style={{ backgroundImage: `url(${cs.coverImage})` }}></div>
+                <div className="case-content">
+                  <div className="case-meta">
+                    <span className="subheading">{cs.brandName}</span>
+                    <h3 className="heading-md">{cs.campaignTitle}</h3>
+                  </div>
+
+                  <div className="case-details">
+                    {cs.theBrief && (
+                      <div className="detail-item">
+                        <h4>The Brief</h4>
+                        <p>{cs.theBrief}</p>
+                      </div>
+                    )}
+                    {cs.theConcept && (
+                      <div className="detail-item">
+                        <h4>The Concept</h4>
+                        <p>{cs.theConcept}</p>
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="case-results">
+                    {cs.stat1Value && (
+                      <div className="result-stat">
+                        <strong>{cs.stat1Value}</strong>
+                        <span>{cs.stat1Label}</span>
+                      </div>
+                    )}
+                    {cs.stat2Value && (
+                      <div className="result-stat">
+                        <strong>{cs.stat2Value}</strong>
+                        <span>{cs.stat2Label}</span>
+                      </div>
+                    )}
+                  </div>
+
+                  <button className="view-case-btn">Full Case Study <ArrowRight size={16} /></button>
                 </div>
-
-                <div className="case-details">
-                  <div className="detail-item">
-                    <h4>The Brief</h4>
-                    <p>What the brand wanted to achieve with the Pakistani-American demographic.</p>
-                  </div>
-                  <div className="detail-item">
-                    <h4>The Concept</h4>
-                    <p>How Wasme integrated the brand naturally into her typical family and lifestyle content.</p>
-                  </div>
-                </div>
-
-                <div className="case-results">
-                  <div className="result-stat">
-                    <strong>185K+</strong>
-                    <span>Views</span>
-                  </div>
-                  <div className="result-stat">
-                    <strong>3.1K+</strong>
-                    <span>Likes</span>
-                  </div>
-                </div>
-
-                <button className="view-case-btn">Full Case Study <ArrowRight size={16} /></button>
-              </div>
-            </motion.div>
-
-            {/* Case Study 2 */}
-            <motion.div className="case-study-card reverse" {...fadeUp}>
-              <div className="case-img" style={{ backgroundImage: 'url(/images/24230D23-EA10-4D64-B521-27B9642A07BA.webp)' }}></div>
-              <div className="case-content">
-                <div className="case-meta">
-                  <span className="subheading">FASHION BRAND</span>
-                  <h3 className="heading-md">Fall/Winter Collection Launch</h3>
-                </div>
-
-                <div className="case-details">
-                  <div className="detail-item">
-                    <h4>The Concept</h4>
-                    <p>A multi-part styling series blending traditional elements with contemporary streetwear.</p>
-                  </div>
-                </div>
-
-                <div className="case-results">
-                  <div className="result-stat">
-                    <strong>210K+</strong>
-                    <span>Reach</span>
-                  </div>
-                  <div className="result-stat">
-                    <strong>5.2%</strong>
-                    <span>Engagement</span>
-                  </div>
-                </div>
-
-                <button className="view-case-btn">Full Case Study <ArrowRight size={16} /></button>
-              </div>
-            </motion.div>
+              </motion.div>
+            ))}
           </div>
         </section>
       </div>
