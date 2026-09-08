@@ -53,7 +53,6 @@ exports.login = async (req, res) => {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'none',
-      domain: process.env.COOKIE_DOMAIN || '.wasmetahir.com',
       maxAge: 8 * 60 * 60 * 1000 // 8 hours
     });
 
@@ -68,8 +67,7 @@ exports.logout = (req, res) => {
   res.clearCookie('adminToken', {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
-    sameSite: 'none',
-    domain: process.env.COOKIE_DOMAIN || '.wasmetahir.com'
+    sameSite: 'none'
   });
   res.json({ message: 'Logged out successfully' });
 };
