@@ -71,8 +71,8 @@
 
 @media (max-width: 768px) {
   .archive-row.two-col {
-    grid-template-columns: 1fr;
-    gap: 8rem;
+    grid-template-columns: 1fr !important;
+    gap: 4rem;
   }
   
   .full-width img {

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Download } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import './MediaKit.css';
 
 const fadeUp = (delay = 0) => ({
@@ -39,9 +40,18 @@ const MediaKit = () => {
             <motion.p className="body-lg" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}>
               Digital Creator bridging the gap between high fashion, lifestyle, and cultural authenticity.
             </motion.p>
-            <motion.button className="download-btn" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}>
+            <motion.a 
+              href="/media-kit/pdf" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="download-btn" 
+              initial={{ opacity: 0 }} 
+              animate={{ opacity: 1 }} 
+              transition={{ delay: 0.3 }}
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none' }}
+            >
               Download PDF Version <Download size={16} />
-            </motion.button>
+            </motion.a>
           </div>
           <motion.div className="mk-header-img" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.2, duration: 1 }}>
              <img src="/images/IMG_4244_main.webp" alt="Wasme Tahir" />
@@ -91,7 +101,7 @@ const MediaKit = () => {
           <motion.div className="mk-contact-box" {...fadeUp()}>
             <h3 className="heading-md">Ready to collaborate?</h3>
             <p className="body-lg">For rates, availability, and custom campaign proposals, please reach out directly.</p>
-            <a href="/contact" className="mk-contact-btn">Get in Touch <ArrowRight size={16} /></a>
+            <Link to="/contact" className="mk-contact-btn">Get in Touch <ArrowRight size={16} /></Link>
           </motion.div>
         </section>
       </div>

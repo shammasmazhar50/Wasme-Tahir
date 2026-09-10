@@ -392,7 +392,37 @@
 
   .large-card {
     grid-column: span 1;
+    aspect-ratio: auto;
+  }
+
+  .world-card {
+    aspect-ratio: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-img {
+    position: relative;
+    width: 100%;
     aspect-ratio: 1/1;
+    height: auto;
+    opacity: 0.9;
+  }
+
+  .world-card:hover .card-img {
+    transform: none;
+    opacity: 0.9;
+  }
+
+  .card-content {
+    position: relative;
+    padding: 2rem;
+    background-color: var(--color-soft-black);
+  }
+
+  .card-content p {
+    font-size: 1.25rem;
+    max-width: 100%;
   }
 
   .sig-item {

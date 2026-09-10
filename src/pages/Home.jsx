@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowDown, ArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import SEO from '../components/SEO';
 import './Home.css';
 
@@ -14,6 +15,7 @@ const staggerContainer = {
 };
 
 const Home = () => {
+  const navigate = useNavigate();
   const { scrollY } = useScroll();
   const heroBgY = useTransform(scrollY, [0, 1000], ['0%', '30%']);
   
@@ -85,6 +87,8 @@ const Home = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 1 }}
+            onClick={() => document.querySelector('.intro-section')?.scrollIntoView({ behavior: 'smooth' })}
+            style={{ cursor: 'pointer' }}
           >
             <span>Explore My Work</span>
             <ArrowDown size={20} className="bounce" />
@@ -190,7 +194,7 @@ const Home = () => {
             <div className="card-content">
               <h3>FASHION</h3>
               <p>Style, GRWM, Pakistani fashion, contemporary looks and personal expression.</p>
-              <span className="explore-link">Explore Fashion <ArrowRight size={16} /></span>
+              <span className="explore-link" onClick={() => navigate('/editorial')} style={{ cursor: 'pointer' }}>Explore Fashion <ArrowRight size={16} /></span>
             </div>
           </motion.div>
 
@@ -273,7 +277,7 @@ const Home = () => {
                 <span><strong>3.1K+</strong> Likes</span>
                 <span><strong>97</strong> Comments</span>
               </div>
-              <button className="campaign-link">View Campaign <ArrowRight size={16} /></button>
+              <button className="campaign-link" onClick={() => navigate('/collaborations')} style={{ cursor: 'pointer' }}>View Campaign <ArrowRight size={16} /></button>
             </div>
           </motion.div>
         </div>

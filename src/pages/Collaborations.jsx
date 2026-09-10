@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import SEO from '../components/SEO';
 import { ArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import './Collaborations.css';
 
 const fadeUp = {
@@ -11,6 +12,7 @@ const fadeUp = {
 };
 
 const Collaborations = () => {
+  const navigate = useNavigate();
   const [brands, setBrands] = useState([]);
   const [caseStudies, setCaseStudies] = useState([]);
 
@@ -97,7 +99,7 @@ const Collaborations = () => {
                     )}
                   </div>
 
-                  <button className="view-case-btn">Full Case Study <ArrowRight size={16} /></button>
+                  <button className="view-case-btn" onClick={() => navigate('/contact')} style={{ cursor: 'pointer' }}>Full Case Study <ArrowRight size={16} /></button>
                 </div>
               </motion.div>
             ))}

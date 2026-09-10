@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import SEO from '../components/SEO';
 import { Download, ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Press.css';
 
 const fadeUp = (delay = 0) => ({
@@ -12,8 +12,17 @@ const fadeUp = (delay = 0) => ({
 });
 
 const Press = () => {
+  const navigate = useNavigate();
   const [visibleBlogs, setVisibleBlogs] = useState(6);
   const [allBlogs, setAllBlogs] = useState([]);
+  const [toastMessage, setToastMessage] = useState(null);
+
+  const showToast = (msg) => {
+    setToastMessage(msg);
+    setTimeout(() => {
+      setToastMessage(null);
+    }, 3000);
+  };
 
   React.useEffect(() => {
     const API = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? 'http://localhost:6002' : 'https://api.wasmetahir.com');
@@ -43,6 +52,32 @@ const Press = () => {
         url="https://wasmetahir.com/press" 
       />
       <div className="container">
+        
+        {/* Toast Notification */}
+        {toastMessage && (
+          <motion.div 
+            initial={{ opacity: 0, y: 50, x: '-50%' }}
+            animate={{ opacity: 1, y: 0, x: '-50%' }}
+            exit={{ opacity: 0, y: 50, x: '-50%' }}
+            style={{
+              position: 'fixed',
+              bottom: '2rem',
+              left: '50%',
+              backgroundColor: 'var(--color-soft-black)',
+              color: 'var(--color-warm-ivory)',
+              padding: '1rem 2rem',
+              borderRadius: '2rem',
+              zIndex: 1000,
+              fontFamily: 'var(--font-body)',
+              fontSize: '0.875rem',
+              textTransform: 'uppercase',
+              letterSpacing: '0.1em',
+              boxShadow: '0 10px 30px rgba(0,0,0,0.1)'
+            }}
+          >
+            {toastMessage}
+          </motion.div>
+        )}
 
         <section className="press-header">
           <motion.h1
@@ -100,25 +135,25 @@ const Press = () => {
           <motion.h3 className="heading-md text-center" {...fadeUp()}>Press Assets</motion.h3>
 
           <div className="download-grid">
-            <motion.a href="#" className="download-card" {...fadeUp()}>
+            <motion.a href="/media-kit/pdf" target="_blank" rel="noopener noreferrer" className="download-card" style={{cursor: 'pointer'}} {...fadeUp()}>
               <Download size={24} />
               <h4>Download Media Kit</h4>
-              <p>PDF, 2.4MB</p>
+              <p>PDF, Auto-Generated</p>
             </motion.a>
 
-            <motion.a href="#" className="download-card" {...fadeUp(0.1)}>
+            <motion.a onClick={(e) => { e.preventDefault(); showToast('High-Resolution Images ZIP will be available soon.'); }} href="#" className="download-card" {...fadeUp(0.1)}>
               <Download size={24} />
               <h4>High-Resolution Images</h4>
               <p>ZIP, 145MB</p>
             </motion.a>
 
-            <motion.a href="#" className="download-card" {...fadeUp(0.2)}>
+            <motion.a onClick={(e) => { e.preventDefault(); showToast('Bio PDF will be available soon.'); }} href="#" className="download-card" {...fadeUp(0.2)}>
               <Download size={24} />
               <h4>Download Bio</h4>
               <p>PDF, 120KB</p>
             </motion.a>
 
-            <motion.a href="#" className="download-card" {...fadeUp(0.3)}>
+            <motion.a onClick={(e) => { e.preventDefault(); showToast('Headshots ZIP will be available soon.'); }} href="#" className="download-card" {...fadeUp(0.3)}>
               <Download size={24} />
               <h4>Download Headshots</h4>
               <p>ZIP, 45MB</p>

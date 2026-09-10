@@ -4,6 +4,7 @@ import Layout from './components/Layout';
 import SmoothScroll from './components/SmoothScroll';
 import ProtectedRoute from './components/ProtectedRoute';
 import ErrorBoundary from './components/ErrorBoundary';
+import ScrollToTop from './components/ScrollToTop';
 
 /* ── Lazy-loaded pages ──────────────────── */
 const Home          = lazy(() => import('./pages/Home'));
@@ -13,6 +14,7 @@ const Editorial     = lazy(() => import('./pages/Editorial'));
 const Press         = lazy(() => import('./pages/Press'));
 const BlogPost      = lazy(() => import('./pages/BlogPost'));
 const MediaKit      = lazy(() => import('./pages/MediaKit'));
+const MediaKitPDF   = lazy(() => import('./pages/MediaKitPDF'));
 const Contact       = lazy(() => import('./pages/Contact'));
 const NotFound      = lazy(() => import('./pages/NotFound'));
 const AdminLogin    = lazy(() => import('./pages/admin/AdminLogin'));
@@ -44,6 +46,7 @@ function App() {
   return (
     <SmoothScroll>
       <Router>
+        <ScrollToTop />
         {/* Page-level error boundary — catches errors in any lazy-loaded page */}
         <ErrorBoundary>
           <Suspense fallback={<PageLoader />}>
@@ -62,6 +65,7 @@ function App() {
               </Route>
 
               {/* Admin Routes without Layout */}
+              <Route path="/media-kit/pdf" element={<MediaKitPDF />} />
               <Route path="/admin/login" element={<AdminLogin />} />
               <Route element={<ProtectedRoute />}>
                 <Route path="/admin/dashboard" element={<AdminDashboard />} />
