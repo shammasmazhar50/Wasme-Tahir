@@ -88,7 +88,9 @@ const Collaborations = () => {
           <div className="case-study-list">
             {Array.isArray(caseStudies) && caseStudies.map((cs, i) => (
               <motion.div key={cs.id} className={`case-study-card ${i % 2 !== 0 ? 'reverse' : ''}`} {...fadeUp}>
-                <div className="case-img" style={{ backgroundImage: `url(${cs.coverImage})` }}></div>
+                <div className="case-img">
+                  <img src={cs.coverImage} alt={cs.campaignTitle} loading="lazy" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                </div>
                 <div className="case-content">
                   <div className="case-meta">
                     <span className="subheading">{cs.brandName}</span>

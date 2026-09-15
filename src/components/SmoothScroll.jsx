@@ -5,9 +5,10 @@ import { ReactLenis, useLenis } from 'lenis/react';
 // lerp: 0.1 is the Lenis recommended default.
 // Higher lerp = fewer frames to settle = prevents the "shoots fast in the middle" effect.
 const LENIS_OPTIONS = {
-  lerp: 0.1,
+  lerp: 0.07, // Smoother deceleration
   smoothWheel: true,
-  wheelMultiplier: 1.0,
+  wheelMultiplier: 0.8, // Tone down raw scroll speed
+  normalizeWheel: true, // Prevents trackpad momentum from stacking and becoming too fast
   touchMultiplier: 1.5,
   syncTouch: false,
   infinite: false,

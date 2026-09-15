@@ -45,7 +45,7 @@ const Editorial = () => {
         <section className="gallery-archive">
 
           <motion.div className="archive-item full-width" {...fadeUp()}>
-            <img src="/images/IMG_6904.webp" alt="Editorial" />
+            <img src="/opt-img/IMG_6904.webp" alt="Editorial" loading="lazy" decoding="async" />
             <div className="archive-caption">
               <span className="caption-cat">FASHION</span>
               <p>Summer in the City</p>
@@ -55,7 +55,7 @@ const Editorial = () => {
 
           <div className="archive-row two-col">
             <motion.div className="archive-item" {...fadeUp()}>
-              <img src="/images/IMG_6535.webp" alt="Editorial" loading="lazy" decoding="async" />
+              <img src="/opt-img/IMG_6535.webp" alt="Editorial" loading="lazy" decoding="async" />
               <div className="archive-caption">
                 <span className="caption-cat">TRAVEL</span>
                 <p>Postcards from Italy</p>
@@ -63,7 +63,7 @@ const Editorial = () => {
               </div>
             </motion.div>
             <motion.div className="archive-item" {...fadeUp(0.2)}>
-              <img src="/images/IMG_7665.webp" alt="Editorial" loading="lazy" decoding="async" />
+              <img src="/opt-img/IMG_7665.webp" alt="Editorial" loading="lazy" decoding="async" />
               <div className="archive-caption">
                 <span className="caption-cat">BEAUTY</span>
                 <p>The Minimalist Routine</p>
@@ -73,7 +73,7 @@ const Editorial = () => {
           </div>
 
           <motion.div className="archive-item full-width" {...fadeUp()}>
-            <img src="/images/IMG_9182.webp" alt="Editorial" loading="lazy" decoding="async" />
+            <img src="/opt-img/IMG_9182.webp" alt="Editorial" loading="lazy" decoding="async" />
             <div className="archive-caption">
               <span className="caption-cat">CULTURE</span>
               <p>Eid Celebrations</p>

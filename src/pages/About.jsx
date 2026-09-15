@@ -32,16 +32,22 @@ const About = () => {
     const progress = Math.max(0, Math.min(1, (viewH - rect.top) / (viewH + rect.height)));
 
     if (img1Ref.current) {
-      img1Ref.current.style.transform = `translateY(${progress * -30}px)`;
-      img1Ref.current.style.opacity = progress < 0.4 ? '1' : '0.65';
+      const isActive = progress < 0.35;
+      img1Ref.current.style.transform = `translate3d(0, ${progress * -30}px, 0)`;
+      img1Ref.current.style.opacity = isActive ? '1' : '0.4';
+      img1Ref.current.style.zIndex = isActive ? '10' : '1';
     }
     if (img2Ref.current) {
-      img2Ref.current.style.transform = `translateY(${progress * 20}px)`;
-      img2Ref.current.style.opacity = progress >= 0.35 && progress < 0.65 ? '1' : '0.65';
+      const isActive = progress >= 0.35 && progress < 0.65;
+      img2Ref.current.style.transform = `translate3d(0, ${progress * 20}px, 0)`;
+      img2Ref.current.style.opacity = isActive ? '1' : '0.4';
+      img2Ref.current.style.zIndex = isActive ? '10' : '3';
     }
     if (img3Ref.current) {
-      img3Ref.current.style.transform = `translateY(${progress * -10}px)`;
-      img3Ref.current.style.opacity = progress >= 0.6 ? '1' : '0.65';
+      const isActive = progress >= 0.65;
+      img3Ref.current.style.transform = `translate3d(0, ${progress * -10}px, 0)`;
+      img3Ref.current.style.opacity = isActive ? '1' : '0.4';
+      img3Ref.current.style.zIndex = isActive ? '10' : '4';
     }
   });
 
@@ -76,7 +82,7 @@ const About = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.2, delay: 0.4, ease: "easeOut" }}
           >
-            <img src="/images/IMG_4542.webp" alt="Wasme Tahir portrait" />
+            <img src="/opt-img/IMG_4542.webp" alt="Wasme Tahir portrait" />
           </motion.div>
         </section>
 
@@ -130,15 +136,15 @@ const About = () => {
             {/* Right Column: Gallery — uses refs + useLenis, no framer-motion scroll bindings */}
             <div className="editorial-gallery">
               <div className="gallery-img" ref={img1Ref} style={{ willChange: 'transform, opacity', transition: 'opacity 0.4s ease' }}>
-                <img src="/images/IMG_8144.webp" alt="Gallery image 1" loading="lazy" decoding="async" />
+                <img src="/opt-img/IMG_8144.webp" alt="Gallery image 1" loading="lazy" decoding="async" />
               </div>
 
               <div className="gallery-img" ref={img2Ref} style={{ willChange: 'transform, opacity', transition: 'opacity 0.4s ease' }}>
-                <img src="/images/IMG_4347.webp" alt="Gallery image 2" loading="lazy" decoding="async" />
+                <img src="/opt-img/IMG_4347.webp" alt="Gallery image 2" loading="lazy" decoding="async" />
               </div>
 
               <div className="gallery-img" ref={img3Ref} style={{ willChange: 'transform, opacity', transition: 'opacity 0.4s ease' }}>
-                <img src="/images/IMG_0609.webp" alt="Gallery image 3" loading="lazy" decoding="async" />
+                <img src="/opt-img/IMG_0609.webp" alt="Gallery image 3" loading="lazy" decoding="async" />
               </div>
             </div>
 

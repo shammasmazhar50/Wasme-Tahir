@@ -105,7 +105,7 @@ const Press = () => {
             <motion.div className="article-row" {...fadeUp(Math.min(index * 0.1, 0.4))} key={blog.slug || blog.fileSlug}>
               <div className="article-img">
                 <img 
-                  src={blog.coverImage || '/images/default-blog.webp'} 
+                  src={blog.coverImage || '/opt-img/default-blog.webp'} 
                   alt={blog.title} 
                   loading="lazy"
                   decoding="async"

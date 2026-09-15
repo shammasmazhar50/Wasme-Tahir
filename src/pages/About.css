@@ -76,6 +76,7 @@
   overflow: hidden;
   border-radius: 4px;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  transform: translateZ(0);
   /* transition for opacity changes driven by useLenis */
   transition: opacity 0.4s ease;
 }

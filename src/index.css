@@ -59,12 +59,14 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overscroll-behavior: none;
-  /* Lenis sets overflow and touch-action internally — do NOT set them here */
-  overflow-x: hidden;
   /* Respect safe-area insets for notched phones (iPhone X+, Android) */
   padding-left: env(safe-area-inset-left);
   padding-right: env(safe-area-inset-right);
+}
+
+#root {
+  overflow-x: clip;
+  position: relative;
 }
 
 h1,

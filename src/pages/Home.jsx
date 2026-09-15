@@ -70,7 +70,7 @@ const Home = () => {
           className="hero-bg"
           ref={heroBgRef}
           style={{
-            backgroundImage: 'url(/images/24230D23-EA10-4D64-B521-27B9642A07BA.webp)',
+            backgroundImage: 'url(/opt-img/24230D23-EA10-4D64-B521-27B9642A07BA.webp)',
           }}
         >
           <div className="hero-overlay"></div>
@@ -121,7 +121,7 @@ const Home = () => {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
           >
-            <img src="/images/IMG_2118.webp" alt="Wasme Tahir Portrait" loading="lazy" />
+            <img src="/opt-img/IMG_2118.webp" alt="Wasme Tahir Portrait" loading="lazy" decoding="async" />
           </motion.div>
 
           <div className="intro-text-content">
@@ -205,7 +205,9 @@ const Home = () => {
         <div className="world-grid">
           {/* Fashion */}
           <motion.div className="world-card large-card" whileHover="hover" initial="initial" whileInView="animate" variants={fadeUp} viewport={{ once: true }}>
-            <div className="card-img" style={{ backgroundImage: 'url(/images/62DBBB6D-00CF-4025-B66D-CD0A0F948E77.webp)' }}></div>
+            <div className="card-img">
+              <img src="/opt-img/62DBBB6D-00CF-4025-B66D-CD0A0F948E77.webp" alt="Fashion" loading="lazy" decoding="async" />
+            </div>
             <div className="card-content">
               <h3>FASHION</h3>
               <p>Style, GRWM, Pakistani fashion, contemporary looks and personal expression.</p>
@@ -215,7 +217,9 @@ const Home = () => {
 
           {/* Lifestyle */}
           <motion.div className="world-card" whileHover="hover" initial="initial" whileInView="animate" variants={fadeUp} viewport={{ once: true }}>
-            <div className="card-img" style={{ backgroundImage: 'url(/images/IMG_9755.webp)' }}></div>
+            <div className="card-img">
+              <img src="/opt-img/IMG_9755.webp" alt="Lifestyle" loading="lazy" decoding="async" />
+            </div>
             <div className="card-content">
               <h3>LIFESTYLE</h3>
               <p>The places, experiences and everyday moments that make up life beyond the feed.</p>
@@ -224,7 +228,9 @@ const Home = () => {
 
           {/* Family & Culture */}
           <motion.div className="world-card" whileHover="hover" initial="initial" whileInView="animate" variants={fadeUp} viewport={{ once: true }}>
-            <div className="card-img" style={{ backgroundImage: 'url(/images/IMG_1179.webp)' }}></div>
+            <div className="card-img">
+              <img src="/opt-img/IMG_1179.webp" alt="Family & Culture" loading="lazy" decoding="async" />
+            </div>
             <div className="card-content">
               <h3>FAMILY & CULTURE</h3>
               <p>Family, relationships, Pakistani-American culture and the moments that people recognize.</p>
@@ -282,7 +288,9 @@ const Home = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <div className="campaign-img" style={{ backgroundImage: 'url(/images/7E924B31.webp)' }}></div>
+            <div className="campaign-img">
+              <img src="/opt-img/7E924B31.webp" alt="Sendwave Campaign" loading="lazy" decoding="async" />
+            </div>
             <div className="campaign-info">
               <h4 className="subheading">SENDWAVE</h4>
               <h3 className="heading-md">Connecting people across borders</h3>

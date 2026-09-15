@@ -24,13 +24,14 @@
 }
 
 .nav-container {
-  max-width: var(--max-width);
+  max-width: 100%;
   margin: 0 auto;
   padding: 0 2rem;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 1.5rem;
 }
 
 .brand-logo {
@@ -139,8 +140,24 @@
   gap: 2rem;
 }
 
+/* ─── Smaller Desktop / Tablet Landscape ─── */
+@media (max-width: 1200px) {
+  .desktop-nav {
+    gap: 1rem;
+  }
+  .desktop-nav a {
+    font-size: 0.75rem;
+  }
+  .social-links {
+    gap: 0.75rem;
+  }
+  .brand-logo {
+    font-size: 1.2rem;
+  }
+}
+
 /* ─── Tablet ─── */
-@media (max-width: 992px) {
+@media (max-width: 1024px) {
   .desktop-nav,
   .desktop-social {
     display: none;
