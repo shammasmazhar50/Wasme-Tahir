@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useLenis } from 'lenis/react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -38,9 +38,14 @@ const Navigation = () => {
   const location = useLocation();
   const isHome = location.pathname === '/';
 
-  // Use Lenis scroll event — synced with the smooth scroller, no native scroll conflict
+  // Gate setState so it only fires when the boolean actually changes (not every frame)
+  const scrolledRef = useRef(false);
   useLenis(({ scroll }) => {
-    setIsScrolled(scroll > 50);
+    const nowScrolled = scroll > 50;
+    if (nowScrolled !== scrolledRef.current) {
+      scrolledRef.current = nowScrolled;
+      setIsScrolled(nowScrolled);
+    }
   });
 
   useEffect(() => {
