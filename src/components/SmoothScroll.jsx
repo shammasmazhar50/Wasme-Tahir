@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ReactLenis, useLenis } from 'lenis/react';
 
 // Tuned for consistent feel across 60hz, 120hz, low-end and high-end devices.
@@ -13,11 +13,18 @@ const LENIS_OPTIONS = {
   infinite: false,
 };
 
+// Expose the Lenis instance ONCE on mount, not on every animation frame.
+// Calling window.__lenis = lenis inside useLenis runs 60-120x/sec — wasteful.
 const LenisExposer = () => {
-  // Expose lenis instance globally so any component can call lenis.scrollTo()
-  useLenis((lenis) => {
-    window.__lenis = lenis;
-  });
+  const lenis = useLenis(); // no callback → just returns the current lenis instance
+  useEffect(() => {
+    if (lenis) {
+      window.__lenis = lenis;
+    }
+    return () => {
+      window.__lenis = null;
+    };
+  }, [lenis]);
   return null;
 };
 

@@ -58,9 +58,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overscroll-behavior: none;
-  /* Prevent native scroll from competing with Lenis on touch devices */
-  touch-action: pan-y;
-  /* Prevent layout from being recalculated by off-screen elements */
+  /* Lenis sets overflow and touch-action internally — do NOT set them here */
   overflow-x: hidden;
 }
 
@@ -98,8 +96,8 @@ video {
   max-width: 100%;
   height: auto;
   display: block;
-  /* Prevent layout shifts from un-loaded images causing jank */
-  content-visibility: auto;
+  /* NOTE: content-visibility:auto intentionally NOT used here.
+     It causes mid-scroll layout recalculations that break smooth scrollers. */
 }
 
 button {
