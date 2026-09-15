@@ -192,4 +192,45 @@
   .logo-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .case-study-list {
+    gap: 5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .collab-header {
+    padding: 5rem 0 3rem;
+  }
+
+  .logo-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .logo-item {
+    font-size: 1.1rem;
+  }
+
+  .case-study-list {
+    gap: 4rem;
+  }
+
+  .collab-logos {
+    padding: 3rem 0 5rem;
+  }
+
+  .case-studies {
+    padding: 5rem 0;
+  }
+
+  .result-stat strong {
+    font-size: 1.75rem;
+  }
+}
+
+@media (min-width: 1600px) {
+  .logo-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
 }

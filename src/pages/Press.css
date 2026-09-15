@@ -76,9 +76,8 @@
 }
 
 .press-downloads {
-  padding: 4rem 0 8rem;
   border-top: 1px solid rgba(26, 26, 26, 0.1);
-  padding-top: 8rem;
+  padding: 8rem 0;
 }
 
 .press-downloads .heading-md {
@@ -146,5 +145,39 @@
   .press-logos {
     gap: 2rem;
     font-size: 1.5rem;
+  }
+
+  .press-articles {
+    padding: 5rem 0;
+    gap: 4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .press-header {
+    padding: 5rem 0 3rem;
+  }
+
+  .press-logos {
+    font-size: 1.1rem;
+    gap: 1.5rem;
+  }
+
+  .press-articles {
+    gap: 3rem;
+  }
+
+  .download-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 1600px) {
+  .article-row {
+    gap: 6rem;
+  }
+
+  .download-grid {
+    grid-template-columns: repeat(4, 1fr);
   }
 }

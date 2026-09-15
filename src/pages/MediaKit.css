@@ -181,11 +181,59 @@
   }
   
   .mk-stats-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
   
   .audience-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .mk-stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .audience-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mk-logos {
+    font-size: 1.5rem;
+    gap: 2rem;
+  }
+
+  .mk-contact-box {
+    padding: 4rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .mk-header {
+    padding: 4rem 0;
+  }
+
+  .mk-stat-box {
+    padding: 2.5rem 1rem;
+  }
+
+  .mk-logos {
+    font-size: 1.25rem;
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 1600px) {
+  .mk-header {
+    padding: 8rem 0;
+  }
+
+  .mk-stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .audience-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 }

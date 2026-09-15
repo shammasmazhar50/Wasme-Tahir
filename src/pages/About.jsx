@@ -22,6 +22,8 @@ const About = () => {
   useLenis(({ scroll }) => {
     const el = editorialRef.current;
     if (!el) return;
+    // CSS resets transforms on tablet/mobile — skip JS parallax there
+    if (window.innerWidth <= 992) return;
 
     const rect = el.getBoundingClientRect();
     // clientHeight is accurate on mobile rotation; window.innerHeight can lag

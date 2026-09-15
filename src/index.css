@@ -25,6 +25,7 @@
   box-sizing: border-box;
 }
 
+/* ─── Lenis required styles ─── */
 html.lenis,
 html.lenis body {
   height: auto;
@@ -46,6 +47,7 @@ html.lenis body {
   pointer-events: none;
 }
 
+/* ─── Base ─── */
 html,
 body {
   margin: 0;
@@ -60,6 +62,9 @@ body {
   overscroll-behavior: none;
   /* Lenis sets overflow and touch-action internally — do NOT set them here */
   overflow-x: hidden;
+  /* Respect safe-area insets for notched phones (iPhone X+, Android) */
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
 }
 
 h1,
@@ -107,7 +112,7 @@ button {
   cursor: pointer;
 }
 
-/* Utilities */
+/* ─── Utilities ─── */
 .container {
   width: 100%;
   max-width: var(--max-width);
@@ -123,23 +128,24 @@ button {
   text-align: right;
 }
 
+/* ─── Typography scale — fluid across all screen sizes ─── */
 .heading-xl {
-  font-size: clamp(3rem, 8vw, 8rem);
+  font-size: clamp(2.5rem, 8vw, 8rem);
   letter-spacing: -0.02em;
   text-transform: uppercase;
 }
 
 .heading-lg {
-  font-size: clamp(2.5rem, 5vw, 5rem);
+  font-size: clamp(2rem, 5vw, 5rem);
   line-height: 1.1;
 }
 
 .heading-md {
-  font-size: clamp(2rem, 3vw, 3rem);
+  font-size: clamp(1.5rem, 3vw, 3rem);
 }
 
 .body-lg {
-  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  font-size: clamp(1rem, 2vw, 1.5rem);
   line-height: 1.6;
 }
 
@@ -151,7 +157,7 @@ button {
   color: var(--color-muted-taupe);
 }
 
-/* Page Transitions */
+/* ─── Page Transitions ─── */
 .page-enter {
   opacity: 0;
   transform: translateY(10px);
@@ -172,12 +178,40 @@ button {
   transition: opacity 600ms;
 }
 
+/* ─── Responsive container ─── */
 @media (max-width: 768px) {
+  .container {
+    padding: 0 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
   .container {
     padding: 0 1rem;
   }
 }
 
+/* ─── Large screens: TVs, wide monitors (≥1600px) ─── */
+@media (min-width: 1600px) {
+  :root {
+    --nav-height: 90px;
+  }
+  .container {
+    padding: 0 4rem;
+  }
+  .subheading {
+    font-size: 1rem;
+  }
+}
+
+/* ─── Very large screens: 4K / TV (≥2400px) ─── */
+@media (min-width: 2400px) {
+  .container {
+    padding: 0 8rem;
+  }
+}
+
+/* ─── Reduced motion ─── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -187,7 +221,7 @@ button {
   }
 }
 
-/* Global utility keyframe used by loaders */
+/* ─── Global utility keyframe used by loaders ─── */
 @keyframes spin {
   to { transform: rotate(360deg); }
 }

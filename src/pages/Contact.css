@@ -110,9 +110,35 @@
   .contact-section {
     grid-template-columns: 1fr;
     gap: 4rem;
+    padding: 5rem 0;
   }
   
   .contact-form-wrapper {
     padding: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-section {
+    padding: 4rem 0;
+  }
+
+  .contact-form-wrapper {
+    padding: 1.5rem;
+  }
+
+  .direct-email a {
+    font-size: 1.25rem;
+  }
+
+  .submit-btn {
+    padding: 0.875rem 1.5rem;
+  }
+}
+
+@media (min-width: 1600px) {
+  .contact-section {
+    padding: 10rem 0;
+    gap: 10rem;
   }
 }

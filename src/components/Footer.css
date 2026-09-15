@@ -2,6 +2,8 @@
   background-color: var(--color-warm-ivory);
   padding: 6rem 0 2rem;
   border-top: 1px solid rgba(26, 26, 26, 0.1);
+  /* Safe-area: phones with home indicators */
+  padding-bottom: max(2rem, env(safe-area-inset-bottom));
 }
 
 .footer-container {
@@ -77,5 +79,20 @@
   .footer-links {
     flex-direction: column;
     gap: 2rem;
+  }
+  .footer {
+    padding: 4rem 0 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-logo {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 1600px) {
+  .footer {
+    padding: 8rem 0 4rem;
   }
 }

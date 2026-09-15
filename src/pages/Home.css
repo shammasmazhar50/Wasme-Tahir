@@ -2,6 +2,8 @@
 .hero-section {
   position: relative;
   height: 100vh;
+  /* Use dvh where supported — fixes the address-bar gap on mobile browsers */
+  height: 100dvh;
   width: 100%;
   display: flex;
   align-items: center;
@@ -39,6 +41,9 @@
   text-align: center;
   color: var(--color-warm-ivory);
   padding: 0 2rem;
+  /* Prevent text from hitting edges on small phones */
+  width: 100%;
+  max-width: 100%;
 }
 
 .hero-title {
@@ -62,10 +67,14 @@
   font-size: 0.875rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
+  /* 44px touch target */
+  padding: 0.75rem;
+  cursor: pointer;
 }
 
 .hero-cta span {
   opacity: 0.8;
+  white-space: nowrap;
 }
 
 .bounce {
@@ -73,7 +82,6 @@
 }
 
 @keyframes bounce {
-
   0%,
   20%,
   50%,
@@ -81,11 +89,9 @@
   100% {
     transform: translateY(0);
   }
-
   40% {
     transform: translateY(-10px);
   }
-
   60% {
     transform: translateY(-5px);
   }
@@ -115,7 +121,7 @@
 }
 
 .intro-body {
-  font-size: 1.25rem;
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
   color: var(--color-soft-black);
   margin-bottom: 3rem;
 }
@@ -159,8 +165,8 @@
 
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 4rem 2rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
 }
 
 .stat-item {
@@ -171,7 +177,7 @@
 
 .stat-num {
   font-family: var(--font-heading);
-  font-size: 4rem;
+  font-size: clamp(2.5rem, 4vw, 4rem);
   margin: 0;
   line-height: 1;
 }
@@ -250,7 +256,7 @@
 
 .card-content p {
   font-family: var(--font-heading);
-  font-size: 2rem;
+  font-size: clamp(1.25rem, 2vw, 2rem);
   max-width: 80%;
   line-height: 1.2;
 }
@@ -286,7 +292,7 @@
 
 .sig-item {
   font-family: var(--font-heading);
-  font-size: 3rem;
+  font-size: clamp(1.75rem, 3vw, 3rem);
   line-height: 1;
   border: 1px solid rgba(26, 26, 26, 0.2);
   padding: 1.5rem 3rem;
@@ -336,6 +342,7 @@
   margin-bottom: 2rem;
   font-family: var(--font-body);
   font-size: 0.875rem;
+  flex-wrap: wrap;
 }
 
 .campaign-stats span {
@@ -345,7 +352,7 @@
 
 .campaign-stats strong {
   font-family: var(--font-heading);
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 2vw, 2rem);
   font-weight: 400;
   color: var(--color-soft-black);
 }
@@ -363,7 +370,7 @@
   padding-bottom: 0.25rem;
 }
 
-/* Responsive */
+/* ─── Tablet (992px) ─── */
 @media (max-width: 992px) {
   .intro-grid {
     grid-template-columns: 1fr;
@@ -372,6 +379,7 @@
 
   .stats-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
   }
 
   .campaign-card {
@@ -380,9 +388,19 @@
   }
 }
 
+/* ─── Mobile (768px) ─── */
 @media (max-width: 768px) {
+  .intro-section {
+    padding: 5rem 1.25rem;
+  }
+
+  .stats-section {
+    padding: 5rem 0;
+  }
+
   .stats-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
   }
 
   .world-grid {
@@ -420,12 +438,64 @@
   }
 
   .card-content p {
-    font-size: 1.25rem;
     max-width: 100%;
   }
 
   .sig-item {
-    font-size: 2rem;
+    font-size: 1.75rem;
     padding: 1rem 2rem;
+  }
+
+  .content-world,
+  .featured-section {
+    padding: 5rem 1.25rem;
+  }
+
+  .signature-section {
+    padding: 5rem 0;
+  }
+
+  .campaign-stats {
+    gap: 1rem;
+  }
+}
+
+/* ─── Small phones (480px) ─── */
+@media (max-width: 480px) {
+  .hero-cta {
+    bottom: -15vh;
+    font-size: 0.75rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .sig-item {
+    font-size: 1.25rem;
+    padding: 0.75rem 1.5rem;
+  }
+
+  .card-content {
+    padding: 1.5rem;
+  }
+}
+
+/* ─── Large screens / TV (≥1600px) ─── */
+@media (min-width: 1600px) {
+  .intro-section,
+  .content-world,
+  .featured-section {
+    padding: 10rem 4rem;
+  }
+
+  .stats-section,
+  .signature-section {
+    padding: 10rem 0;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
