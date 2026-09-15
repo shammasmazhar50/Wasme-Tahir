@@ -46,7 +46,7 @@ const Collaborations = () => {
 
         <section className="collab-logos">
           <div className="logo-grid">
-            {brands.map((b, i) => (
+            {Array.isArray(brands) && brands.map((b, i) => (
               <motion.div key={b.id} className="logo-item" {...fadeUp} transition={{ delay: (i % 4) * 0.1 }}>
                 {b.link ? (
                   <a href={b.link} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'inherit' }}>
@@ -66,7 +66,7 @@ const Collaborations = () => {
           </motion.h2>
 
           <div className="case-study-list">
-            {caseStudies.map((cs, i) => (
+            {Array.isArray(caseStudies) && caseStudies.map((cs, i) => (
               <motion.div key={cs.id} className={`case-study-card ${i % 2 !== 0 ? 'reverse' : ''}`} {...fadeUp}>
                 <div className="case-img" style={{ backgroundImage: `url(${cs.coverImage})` }}></div>
                 <div className="case-content">
