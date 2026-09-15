@@ -102,7 +102,7 @@ const Press = () => {
 
         <section className="press-articles">
           {allBlogs.slice(0, visibleBlogs).map((blog, index) => (
-            <motion.div className="article-row" {...fadeUp(index * 0.1)} key={blog.slug || blog.fileSlug}>
+            <motion.div className="article-row" {...fadeUp(Math.min(index * 0.1, 0.4))} key={blog.slug || blog.fileSlug}>
               <div className="article-img">
                 <img 
                   src={blog.coverImage || '/images/default-blog.webp'} 

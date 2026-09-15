@@ -24,7 +24,8 @@ const About = () => {
     if (!el) return;
 
     const rect = el.getBoundingClientRect();
-    const viewH = window.innerHeight;
+    // clientHeight is accurate on mobile rotation; window.innerHeight can lag
+    const viewH = el.ownerDocument.documentElement.clientHeight;
     // Progress 0 (el enters viewport from bottom) → 1 (el exits viewport from top)
     const progress = Math.max(0, Math.min(1, (viewH - rect.top) / (viewH + rect.height)));
 

@@ -17,9 +17,18 @@ const MediaKit = () => {
 
   useEffect(() => {
     const API = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? 'http://localhost:6002' : 'https://api.wasmetahir.com');
-    fetch(`${API}/api/stats`).then(res => res.json()).then(data => setStats(data));
-    fetch(`${API}/api/collab/demographics`).then(res => res.json()).then(data => setDemographics(data));
-    fetch(`${API}/api/collab/brands`).then(res => res.json()).then(data => setBrands(data));
+    fetch(`${API}/api/stats`)
+      .then(res => res.json())
+      .then(data => setStats(Array.isArray(data) ? data : []))
+      .catch(() => setStats([]));
+    fetch(`${API}/api/collab/demographics`)
+      .then(res => res.json())
+      .then(data => setDemographics(Array.isArray(data) ? data : []))
+      .catch(() => setDemographics([]));
+    fetch(`${API}/api/collab/brands`)
+      .then(res => res.json())
+      .then(data => setBrands(Array.isArray(data) ? data : []))
+      .catch(() => setBrands([]));
   }, []);
 
   return (
@@ -66,7 +75,7 @@ const MediaKit = () => {
           </motion.div>
           {Array.isArray(stats) && stats.slice(0, 2).map((s, i) => (
              <motion.div key={s.id} className="mk-stat-box" {...fadeUp((i+1)*0.1)}>
-               <span className="subheading">{s.platform.toUpperCase()}</span>
+               <span className="subheading">{(s.platform || s.label || '').toUpperCase()}</span>
                <h2 className="heading-md">{s.value}</h2>
                <p>{s.label}</p>
              </motion.div>

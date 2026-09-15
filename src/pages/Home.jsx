@@ -8,23 +8,27 @@ import './Home.css';
 
 const fadeUp = {
   initial: { opacity: 0, y: 40 },
-  animate: { opacity: 1, y: 0, transition: { duration: 1, ease: [0.16, 1, 0.3, 1] } }
+  animate: { opacity: 1, y: 0, transition: { duration: 1, ease: [0.16, 1, 0.3, 1] } },
+  // whileInView alias — same animation, triggered by scroll not mount
+  whileInView: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
 };
 
 const staggerContainer = {
-  animate: { transition: { staggerChildren: 0.15 } }
+  animate: { transition: { staggerChildren: 0.15 } },
+  whileInView: { transition: { staggerChildren: 0.15 } },
 };
 
 const Home = () => {
   const navigate = useNavigate();
   const heroBgRef = useRef(null);
 
-  // Sync parallax directly with Lenis — no native scroll conflict
+  // Parallax only runs while hero section is visible — stops wasting CPU mid-page
   useLenis(({ scroll }) => {
-    if (heroBgRef.current) {
-      const pct = Math.min(scroll / 1000, 1);
-      heroBgRef.current.style.transform = `translateY(${pct * 30}%)`;
-    }
+    if (!heroBgRef.current) return;
+    // Hero is ~100vh tall; stop updating after user scrolls past it
+    if (scroll > window.innerHeight * 1.5) return;
+    const pct = Math.min(scroll / 1000, 1);
+    heroBgRef.current.style.transform = `translateY(${pct * 30}%)`;
   });
   
   const [stats, setStats] = useState([

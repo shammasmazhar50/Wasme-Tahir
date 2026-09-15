@@ -18,8 +18,14 @@ const Collaborations = () => {
 
   useEffect(() => {
     const API = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? 'http://localhost:6002' : 'https://api.wasmetahir.com');
-    fetch(`${API}/api/collab/brands`).then(res => res.json()).then(data => setBrands(data));
-    fetch(`${API}/api/collab/cases`).then(res => res.json()).then(data => setCaseStudies(data));
+    fetch(`${API}/api/collab/brands`)
+      .then(res => res.json())
+      .then(data => setBrands(Array.isArray(data) ? data : []))
+      .catch(() => setBrands([]));
+    fetch(`${API}/api/collab/cases`)
+      .then(res => res.json())
+      .then(data => setCaseStudies(Array.isArray(data) ? data : []))
+      .catch(() => setCaseStudies([]));
   }, []);
 
   return (

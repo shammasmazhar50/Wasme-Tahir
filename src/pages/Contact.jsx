@@ -68,7 +68,7 @@ const Contact = () => {
               Let's create something worth remembering.
             </motion.h1>
 
-            <motion.div className="contact-categories" {...fadeUp} transition={{ delay: 0.2 }}>
+            <motion.div className="contact-categories" {...fadeUp} style={{ transitionDelay: '0.2s' }}>
               <span className="subheading">AVAILABLE FOR</span>
               <ul>
                 <li>Brand Partnerships</li>
@@ -80,7 +80,7 @@ const Contact = () => {
               </ul>
             </motion.div>
 
-            <motion.div className="direct-email" {...fadeUp} transition={{ delay: 0.3 }}>
+            <motion.div className="direct-email" {...fadeUp} style={{ transitionDelay: '0.3s' }}>
               <span className="subheading">DIRECT INQUIRIES</span>
               <a href="mailto:contact@wasmetahir.com">contact@wasmetahir.com</a>
             </motion.div>

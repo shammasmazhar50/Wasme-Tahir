@@ -48,9 +48,9 @@ const BlogPost = () => {
       {blog && (
         <SEO 
           title={`${blog.title} | Wasme Tahir`} 
-          description={blog.excerpt || blog.content.substring(0, 150)}
+          description={blog.excerpt || blog.content?.substring(0, 150) || ''}
           image={blog.coverImage || blog.image}
-          url={`https://wasmetahir.com/post/${blog.slug || slug}`}
+          url={`https://wasmetahir.com/press/${blog.slug || slug}`}
           type="article"
         />
       )}
