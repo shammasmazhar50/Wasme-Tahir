@@ -65,7 +65,7 @@ const MediaKitPDF = () => {
         <div className="pdf-header">
            <div 
              className="pdf-hero-bg" 
-             style={{ backgroundImage: 'url(/images/IMG_4244_main.webp)' }}
+             style={{ backgroundImage: 'url(/images/IMG_8380.webp)' }}
            ></div>
            <div className="pdf-header-text">
              <h2>MEDIA KIT 2026</h2>
