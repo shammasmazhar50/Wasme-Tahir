@@ -64,7 +64,7 @@ const MediaKit = () => {
             <h2 className="heading-lg">155K+</h2>
             <p>Across all platforms</p>
           </motion.div>
-          {stats.slice(0, 2).map((s, i) => (
+          {Array.isArray(stats) && stats.slice(0, 2).map((s, i) => (
              <motion.div key={s.id} className="mk-stat-box" {...fadeUp((i+1)*0.1)}>
                <span className="subheading">{s.platform.toUpperCase()}</span>
                <h2 className="heading-md">{s.value}</h2>
@@ -76,7 +76,7 @@ const MediaKit = () => {
         <section className="mk-audience">
           <motion.h3 className="heading-md" {...fadeUp()}>Audience Demographics</motion.h3>
           <div className="audience-grid">
-            {demographics.map((d, i) => (
+            {Array.isArray(demographics) && demographics.map((d, i) => (
               <motion.div key={d.id} className="audience-card" {...fadeUp(i*0.1)}>
                 <h4>{d.category}</h4>
                 {d.category.toLowerCase().includes('age') || d.category.toLowerCase().includes('gender') ? (
@@ -91,7 +91,7 @@ const MediaKit = () => {
         <section className="mk-partnerships">
           <motion.h3 className="heading-md text-center" {...fadeUp()}>Selected Partnerships</motion.h3>
           <motion.div className="mk-logos" {...fadeUp()}>
-            {brands.map(b => (
+            {Array.isArray(brands) && brands.map(b => (
               <span key={b.id}>{b.name}</span>
             ))}
           </motion.div>

@@ -81,7 +81,7 @@ const MediaKitPDF = () => {
               <h2>155K+</h2>
               <p>Across all platforms</p>
             </div>
-            {stats.slice(0, 3).map((s) => (
+            {Array.isArray(stats) && stats.slice(0, 3).map((s) => (
                <div key={s.id} className="pdf-stat-box">
                  <span className="pdf-subheading">{s.platform.toUpperCase()}</span>
                  <h2>{s.value}</h2>
@@ -94,7 +94,7 @@ const MediaKitPDF = () => {
         <div className="pdf-section">
           <h3 className="pdf-section-title">Audience Demographics</h3>
           <div className="pdf-audience-grid">
-            {demographics.map((d) => (
+            {Array.isArray(demographics) && demographics.map((d) => (
               <div key={d.id} className="pdf-audience-card">
                 <h4>{d.category}</h4>
                 <p style={{whiteSpace: 'pre-line'}}>{d.data}</p>
@@ -106,7 +106,7 @@ const MediaKitPDF = () => {
         <div className="pdf-section">
           <h3 className="pdf-section-title">Selected Partnerships</h3>
           <div className="pdf-logos">
-            {brands.map(b => (
+            {Array.isArray(brands) && brands.map(b => (
               <span key={b.id}>{b.name}</span>
             ))}
           </div>
