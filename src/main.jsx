@@ -1,4 +1,3 @@
-import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './index.css';
 import App from './App.jsx';
@@ -17,11 +16,9 @@ const rootEl = document.getElementById('root');
 if (!rootEl) throw new Error('[main.jsx] Root element #root not found in DOM!');
 
 createRoot(rootEl).render(
-  <StrictMode>
-    <HelmetProvider>
-      <ErrorBoundary>
-        <App />
-      </ErrorBoundary>
-    </HelmetProvider>
-  </StrictMode>
+  <HelmetProvider>
+    <ErrorBoundary>
+      <App />
+    </ErrorBoundary>
+  </HelmetProvider>
 );

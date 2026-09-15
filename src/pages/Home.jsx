@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
+import { useLenis } from 'lenis/react';
 import { ArrowDown, ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import SEO from '../components/SEO';
@@ -16,8 +17,15 @@ const staggerContainer = {
 
 const Home = () => {
   const navigate = useNavigate();
-  const { scrollY } = useScroll();
-  const heroBgY = useTransform(scrollY, [0, 1000], ['0%', '30%']);
+  const heroBgRef = useRef(null);
+
+  // Sync parallax directly with Lenis — no native scroll conflict
+  useLenis(({ scroll }) => {
+    if (heroBgRef.current) {
+      const pct = Math.min(scroll / 1000, 1);
+      heroBgRef.current.style.transform = `translateY(${pct * 30}%)`;
+    }
+  });
   
   const [stats, setStats] = useState([
     { num: '75M+', label: 'TikTok Views' },
@@ -54,15 +62,15 @@ const Home = () => {
       {/* 01 - HERO */}
       <section className="hero-section">
         {/* Placeholder for video */}
-        <motion.div
+        <div
           className="hero-bg"
+          ref={heroBgRef}
           style={{
             backgroundImage: 'url(/images/24230D23-EA10-4D64-B521-27B9642A07BA.webp)',
-            y: heroBgY
           }}
         >
           <div className="hero-overlay"></div>
-        </motion.div>
+        </div>
 
         <div className="hero-content">
           <motion.h1
@@ -87,7 +95,10 @@ const Home = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 1 }}
-            onClick={() => document.querySelector('.intro-section')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => {
+              const el = document.querySelector('.intro-section');
+              if (el) window.__lenis?.scrollTo(el, { offset: 0 });
+            }}
             style={{ cursor: 'pointer' }}
           >
             <span>Explore My Work</span>

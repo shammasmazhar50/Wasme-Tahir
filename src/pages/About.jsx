@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { useLenis } from 'lenis/react';
 import SEO from '../components/SEO';
 import './About.css';
 
@@ -10,30 +11,36 @@ const fadeUp = {
 };
 
 const About = () => {
+  const img1Ref = useRef(null);
+  const img2Ref = useRef(null);
+  const img3Ref = useRef(null);
   const editorialRef = useRef(null);
 
-  const { scrollYProgress } = useScroll({
-    target: editorialRef,
-    offset: ["start end", "end start"]
+  // Single Lenis listener — directly sets CSS transforms on refs.
+  // This is far cheaper than 12 framer-motion useTransform subscriptions
+  // and doesn't conflict with Lenis because it reads Lenis scroll, not native.
+  useLenis(({ scroll }) => {
+    const el = editorialRef.current;
+    if (!el) return;
+
+    const rect = el.getBoundingClientRect();
+    const viewH = window.innerHeight;
+    // Progress 0 (el enters viewport from bottom) → 1 (el exits viewport from top)
+    const progress = Math.max(0, Math.min(1, (viewH - rect.top) / (viewH + rect.height)));
+
+    if (img1Ref.current) {
+      img1Ref.current.style.transform = `translateY(${progress * -30}px)`;
+      img1Ref.current.style.opacity = progress < 0.4 ? '1' : '0.65';
+    }
+    if (img2Ref.current) {
+      img2Ref.current.style.transform = `translateY(${progress * 20}px)`;
+      img2Ref.current.style.opacity = progress >= 0.35 && progress < 0.65 ? '1' : '0.65';
+    }
+    if (img3Ref.current) {
+      img3Ref.current.style.transform = `translateY(${progress * -10}px)`;
+      img3Ref.current.style.opacity = progress >= 0.6 ? '1' : '0.65';
+    }
   });
-
-  // Parallax shifts for subtle depth
-  const y1 = useTransform(scrollYProgress, [0, 1], [0, -30]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [0, 20]);
-  const y3 = useTransform(scrollYProgress, [0, 1], [0, -10]);
-
-  // Option 1 Swap Logic: Highlight active picture based on scroll
-  const z1 = useTransform(scrollYProgress, p => p < 0.35 ? 10 : 1);
-  const z2 = useTransform(scrollYProgress, p => p >= 0.35 && p < 0.65 ? 10 : 2);
-  const z3 = useTransform(scrollYProgress, p => p >= 0.65 ? 10 : 3);
-
-  const scale1 = useTransform(scrollYProgress, [0, 0.35, 0.4, 1], [1.05, 1.05, 1, 1]);
-  const scale2 = useTransform(scrollYProgress, [0, 0.3, 0.35, 0.65, 0.7, 1], [1, 1, 1.05, 1.05, 1, 1]);
-  const scale3 = useTransform(scrollYProgress, [0, 0.6, 0.65, 1], [1, 1, 1.05, 1.05]);
-
-  const opacity1 = useTransform(scrollYProgress, [0, 0.35, 0.4, 1], [1, 1, 0.6, 0.6]);
-  const opacity2 = useTransform(scrollYProgress, [0, 0.3, 0.35, 0.65, 0.7, 1], [0.6, 0.6, 1, 1, 0.6, 0.6]);
-  const opacity3 = useTransform(scrollYProgress, [0, 0.6, 0.65, 1], [0.6, 0.6, 1, 1]);
 
   return (
     <motion.div
@@ -117,28 +124,19 @@ const About = () => {
               </motion.div>
             </div>
 
-            {/* Right Column: Gallery */}
+            {/* Right Column: Gallery — uses refs + useLenis, no framer-motion scroll bindings */}
             <div className="editorial-gallery">
-              <motion.div
-                className="gallery-img"
-                style={{ y: y1, zIndex: z1, scale: scale1, opacity: opacity1 }}
-              >
+              <div className="gallery-img" ref={img1Ref} style={{ willChange: 'transform, opacity', transition: 'opacity 0.4s ease' }}>
                 <img src="/images/IMG_8144.webp" alt="Gallery image 1" loading="lazy" decoding="async" />
-              </motion.div>
+              </div>
 
-              <motion.div
-                className="gallery-img"
-                style={{ y: y2, zIndex: z2, scale: scale2, opacity: opacity2 }}
-              >
+              <div className="gallery-img" ref={img2Ref} style={{ willChange: 'transform, opacity', transition: 'opacity 0.4s ease' }}>
                 <img src="/images/IMG_4347.webp" alt="Gallery image 2" loading="lazy" decoding="async" />
-              </motion.div>
+              </div>
 
-              <motion.div
-                className="gallery-img"
-                style={{ y: y3, zIndex: z3, scale: scale3, opacity: opacity3 }}
-              >
+              <div className="gallery-img" ref={img3Ref} style={{ willChange: 'transform, opacity', transition: 'opacity 0.4s ease' }}>
                 <img src="/images/IMG_0609.webp" alt="Gallery image 3" loading="lazy" decoding="async" />
-              </motion.div>
+              </div>
             </div>
 
           </div>

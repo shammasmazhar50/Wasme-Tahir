@@ -58,6 +58,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overscroll-behavior: none;
+  /* Prevent native scroll from competing with Lenis on touch devices */
+  touch-action: pan-y;
+  /* Prevent layout from being recalculated by off-screen elements */
+  overflow-x: hidden;
 }
 
 h1,
@@ -94,6 +98,8 @@ video {
   max-width: 100%;
   height: auto;
   display: block;
+  /* Prevent layout shifts from un-loaded images causing jank */
+  content-visibility: auto;
 }
 
 button {

@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useLenis } from 'lenis/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import './Navigation.css';
 
@@ -37,13 +38,10 @@ const Navigation = () => {
   const location = useLocation();
   const isHome = location.pathname === '/';
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  // Use Lenis scroll event — synced with the smooth scroller, no native scroll conflict
+  useLenis(({ scroll }) => {
+    setIsScrolled(scroll > 50);
+  });
 
   useEffect(() => {
     setMobileMenuOpen(false);
