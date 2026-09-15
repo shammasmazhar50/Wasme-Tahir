@@ -1,12 +1,10 @@
-import React, { useEffect, useRef } from 'react';
-import Lenis from 'lenis';
+import React from 'react';
+import { ReactLenis } from 'lenis/react';
 
 const SmoothScroll = ({ children }) => {
-  const lenisRef = useRef();
-
-  useEffect(() => {
-    const lenis = new Lenis({
-      lerp: 0.08, // Frame-rate independent linear interpolation (fixes 120hz feeling too fast/janky)
+  return (
+    <ReactLenis root options={{
+      lerp: 0.08, // Frame-rate independent linear interpolation
       smoothWheel: true,
       wheelMultiplier: 1,
       direction: 'vertical',
@@ -14,26 +12,10 @@ const SmoothScroll = ({ children }) => {
       smoothTouch: false,
       touchMultiplier: 2,
       infinite: false,
-    });
-
-    lenisRef.current = lenis;
-
-    let rafId;
-
-    function raf(time) {
-      lenis.raf(time);
-      rafId = requestAnimationFrame(raf);
-    }
-
-    rafId = requestAnimationFrame(raf);
-
-    return () => {
-      cancelAnimationFrame(rafId);
-      lenis.destroy();
-    };
-  }, []);
-
-  return <>{children}</>;
+    }}>
+      {children}
+    </ReactLenis>
+  );
 };
 
 export default SmoothScroll;
