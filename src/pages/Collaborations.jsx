@@ -47,15 +47,29 @@ const Collaborations = () => {
         <section className="collab-logos">
           <div className="logo-grid">
             {Array.isArray(brands) && brands.map((b, i) => (
-              <motion.div key={b.id} className="logo-item" {...fadeUp} transition={{ delay: (i % 4) * 0.1 }}>
-                {b.link ? (
-                  <a href={b.link} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'inherit' }}>
-                    {b.name}
-                  </a>
-                ) : (
-                  b.name
-                )}
-              </motion.div>
+              b.link ? (
+                <motion.a 
+                  href={b.link}
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  key={b.id} 
+                  className="logo-item" 
+                  {...fadeUp} 
+                  transition={{ delay: (i % 4) * 0.1 }}
+                  style={{ textDecoration: 'none' }}
+                >
+                  {b.name}
+                </motion.a>
+              ) : (
+                <motion.div 
+                  key={b.id} 
+                  className="logo-item" 
+                  {...fadeUp} 
+                  transition={{ delay: (i % 4) * 0.1 }}
+                >
+                  {b.name}
+                </motion.div>
+              )
             ))}
           </div>
         </section>
