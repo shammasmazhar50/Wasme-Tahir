@@ -6,12 +6,11 @@ const SmoothScroll = ({ children }) => {
 
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // standard easing for super smooth feel
+      lerp: 0.08, // Frame-rate independent linear interpolation (fixes 120hz feeling too fast/janky)
+      smoothWheel: true,
+      wheelMultiplier: 1,
       direction: 'vertical',
       gestureDirection: 'vertical',
-      smooth: true,
-      mouseMultiplier: 1,
       smoothTouch: false,
       touchMultiplier: 2,
       infinite: false,
