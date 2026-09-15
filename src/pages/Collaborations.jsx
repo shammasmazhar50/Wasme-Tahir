@@ -48,7 +48,13 @@ const Collaborations = () => {
           <div className="logo-grid">
             {brands.map((b, i) => (
               <motion.div key={b.id} className="logo-item" {...fadeUp} transition={{ delay: (i % 4) * 0.1 }}>
-                {b.name}
+                {b.link ? (
+                  <a href={b.link} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'inherit' }}>
+                    {b.name}
+                  </a>
+                ) : (
+                  b.name
+                )}
               </motion.div>
             ))}
           </div>

@@ -461,7 +461,7 @@ const AdminDashboard = () => {
 
             <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12}}>
               <p className="field-label" style={{ margin: 0 }}>Brand Partners</p>
-              <button className="btn-secondary" style={{padding: '5px 12px'}} onClick={() => addNewItem(brands, setBrands, { name: '', logoUrl: '', order: 0 })}>+ Add Brand</button>
+              <button className="btn-secondary" style={{padding: '5px 12px'}} onClick={() => addNewItem(brands, setBrands, { name: '', link: '', logoUrl: '', order: 0 })}>+ Add Brand</button>
             </div>
             
             {brands.length === 0 && <div className="inbox-empty-sub" style={{marginBottom: 20}}>No brands configured yet.</div>}
@@ -473,6 +473,11 @@ const AdminDashboard = () => {
                     <label className="field-label">Brand Name</label>
                     <input className="field-input" value={b.name || ''}
                       onChange={e => updateLocal(brands, setBrands, b.id, 'name', e.target.value)} />
+                  </div>
+                  <div className="field-group" style={{ flex: 1 }}>
+                    <label className="field-label">Brand Link</label>
+                    <input className="field-input" placeholder="https://" value={b.link || ''}
+                      onChange={e => updateLocal(brands, setBrands, b.id, 'link', e.target.value)} />
                   </div>
                 </div>
                 <div className="card-actions">
