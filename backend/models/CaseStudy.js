@@ -12,6 +12,10 @@ const CaseStudy = sequelize.define('CaseStudy', {
   stat2Value: { type: DataTypes.STRING },
   stat2Label: { type: DataTypes.STRING },
   order: { type: DataTypes.INTEGER, defaultValue: 0 }
+}, {
+  indexes: [
+    { fields: ['order'] }
+  ]
 });
 
 module.exports = CaseStudy;

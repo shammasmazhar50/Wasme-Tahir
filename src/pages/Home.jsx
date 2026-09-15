@@ -106,7 +106,7 @@ const Home = () => {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
           >
-            <img src="/images/IMG_2118.webp" alt="Wasme Tahir Portrait" />
+            <img src="/images/IMG_2118.webp" alt="Wasme Tahir Portrait" loading="lazy" />
           </motion.div>
 
           <div className="intro-text-content">

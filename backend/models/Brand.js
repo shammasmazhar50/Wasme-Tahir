@@ -6,6 +6,10 @@ const Brand = sequelize.define('Brand', {
   link: { type: DataTypes.STRING },
   logoUrl: { type: DataTypes.STRING }, // if null, can just render text
   order: { type: DataTypes.INTEGER, defaultValue: 0 }
+}, {
+  indexes: [
+    { fields: ['order'] }
+  ]
 });
 
 module.exports = Brand;
